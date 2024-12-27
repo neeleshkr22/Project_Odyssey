@@ -85,9 +85,19 @@ input {
 
 }
 
-.formlog{
-    margin-top: 105px;
+.form1{
+    margin-top: 60px;
 }
+.formlog{
+    margin-top: 120px;
+}
+
+.email, .password , .username{
+    height: 40px; /* Adjust as needed */
+    padding: 10px; /* Optional: adjust padding to fit with the height */
+    font-size: 16px; /* Optional: adjust font size */
+  }
+  
 
 
   

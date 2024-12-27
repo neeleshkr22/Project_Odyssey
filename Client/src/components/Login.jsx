@@ -52,7 +52,7 @@ function Register() {
           </Link>
         </div>
 
-        <form className="form1 formlog" onSubmit={submitHandler}>
+        <form className="form1 formlog " onSubmit={submitHandler}>
           <div>
             <label className="errlabel">Email</label>
             <input
