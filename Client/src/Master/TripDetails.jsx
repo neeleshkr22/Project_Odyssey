@@ -23,7 +23,7 @@ const TripDetails = () => {
         <div className="cards flex flex-wrap gap-6 mt-10 ml-[5.5rem] ">
             {/* Example of vehicle cards */}
             {[...Array(5)].map((_, index) => (
-            <div key={index} className="artboard artboard-demo w-80 h-48 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between">
+            <div key={index} className="artboard artboard-demo w-[30%] h-48 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between">
                 <p className=" "> Vehicle {index + 1}</p>
                 <p className="text-gray-600"> Party {index + 1}.</p>
                 <p className="text-gray-600">Date {index + 1}.</p>

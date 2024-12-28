@@ -26,17 +26,17 @@ const Sidebar = () => {
 
           <ul className="menu bg-base-200 text-base-content min-h-full w-64 p-4 flex flex-col items-center space-y-5">
             {/* Sidebar content here */}
-            <NavLink to="/" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base mt-20'>
-              <i className="bi bi-house mr-5"></i>Home
+            <NavLink to="/" className='cursor-pointer gap-6  flex hover:bg-base-300 pl-12 pr-10 pt-2 pb-2 rounded-3xl text-base mt-20'>
+              <i className="bi bi-house "></i>Home
             </NavLink>
 
             {/* Master Menu Item */}
-            <li className='flex flex-col'>
+            <li className='flex flex-col ml-4'>
               <button
                 onClick={toggleMasterMenu}
-                className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'
+                className='cursor-pointer flex gap-6 hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'
               >
-                <i className="bi bi-house mr-5"></i>Master
+                <i className="bi bi-house "></i>Master
               </button>
               {isMasterOpen && (
                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
@@ -53,9 +53,9 @@ const Sidebar = () => {
             <li className='flex flex-col'>
               <button
                 onClick={toggleReportsMenu}
-                className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'
+                className='cursor-pointer flex gap-6  hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base ml-6'
               >
-                <i className="bi bi-file-earmark-text mr-5"></i>Reports
+                <i className="bi bi-file-earmark-text"></i>Reports
               </button>
               {isReportsOpen && (
                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
@@ -76,9 +76,9 @@ const Sidebar = () => {
             <li className='flex flex-col'>
               <button
                 onClick={toggleEntriesMenu}
-                className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'
+                className='cursor-pointer flex gap-6  hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base ml-5'
               >
-                <i className="bi bi-file-earmark-plus mr-5"></i>Entries
+                <i className="bi bi-file-earmark-plus"></i>Entries
               </button>
               {isEntriesOpen && (
                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
@@ -94,12 +94,12 @@ const Sidebar = () => {
             <li className='flex flex-col'>
               <button
                 onClick={toggleListingsMenu}
-                className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-xl text-base'
+                className='cursor-pointer flex gap-6  hover:bg-base-300 pl-12 pr-10 pt-2 pb-2 rounded-xl text-base ml-5'
               >
-                <i className="bi bi-list-ul mr5"></i>Listings
+                <i className="bi bi-list-ul "></i>Listings
               </button>
               {isListingsOpen && (
-                <ul className='flex flex-col space-y= 2 pl=10 mt= 2'>
+                <ul className='flex flex-col space-y= 2 pl-10 mt-2'>
                   {/* Add your listings sub-items here */}
                   <NavLink to="/listing-type1" className='hover:bg-base=300 p= 2 rounded-lg'>Listing Type 1</NavLink>
                   <NavLink to="/listing-type2" className='hover:bg-base=300 p= 2 rounded-lg'>Listing Type 2</NavLink>
