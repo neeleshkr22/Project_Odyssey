@@ -2,6 +2,7 @@ import React from "react";
 import { useThemeStore } from "../components/useThemeStore";
 import { Send } from "lucide-react";
 import Navbar from "./Navbar";
+import SideBar from "./Sidebar";
 
 const PREVIEW_MESSAGES = [
   { id: 1, content: "Hey! How's it going?", isSent: false },
@@ -142,6 +143,8 @@ const SettingsPage = () => {
         </div>
       </div>
     </div>
+
+    <SideBar></SideBar>
     </div>
   );
 };

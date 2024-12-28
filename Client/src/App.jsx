@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ThemeSettings from "./components/ThemeSettings";
+import MainPage from "./components/MainPage";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       <Navbar />
       <div className="pt-16"> {}
         <Routes>
-          <Route path="/" element={<div>Welcome to Home Page</div>} />
+          <Route path="/" element={<MainPage></MainPage>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/settings" element={<ThemeSettings />} />

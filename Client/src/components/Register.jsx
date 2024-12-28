@@ -3,6 +3,7 @@ import '../Css/RegisterForm.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import SideBar from './Sidebar';
 
 axios.defaults.withCredentials = true;
 
@@ -130,6 +131,7 @@ function Register() {
           </button>
         </form>
       </div>
+      <SideBar></SideBar>
     </div>
   );
 }
