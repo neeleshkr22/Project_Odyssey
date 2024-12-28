@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      <div className="drawer">
+      <div className="drawer z-30">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           {/* Main content goes here */}
@@ -40,11 +40,11 @@ const Sidebar = () => {
               </button>
               {isMasterOpen && (
                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
-                  <NavLink to="/vehicle-master" className='hover:bg-base-300 p-2 rounded-lg'>Vehicle Details</NavLink>
-                  <NavLink to="/driver-master" className='hover:bg-base-300 p-2 rounded-lg'>Driver Details</NavLink>
-                  <NavLink to="/party-master" className='hover:bg-base-300 p-2 rounded-lg'>Party Details</NavLink>
-                  <NavLink to="/owner-master" className='hover:bg-base-300 p-2 rounded-lg'>Owner Details</NavLink>
-                  <NavLink to="/trip-master" className='hover:bg-base-300 p-2 rounded-lg'>Trip Details</NavLink>
+                  <NavLink to="/vehicle-master" className='hover:bg-base-300 p-2 rounded-lg'>Vehicles </NavLink>
+                  <NavLink to="/driver-master" className='hover:bg-base-300 p-2 rounded-lg'>Drivers </NavLink>
+                  <NavLink to="/party-master" className='hover:bg-base-300 p-2 rounded-lg'>Parties </NavLink>
+                  <NavLink to="/owner-master" className='hover:bg-base-300 p-2 rounded-lg'>Owners</NavLink>
+                  <NavLink to="/trip-master" className='hover:bg-base-300 p-2 rounded-lg'>Trips</NavLink>
                 </ul>
               )}
             </li>

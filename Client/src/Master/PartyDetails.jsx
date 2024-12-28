@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import { NavLink } from 'react-router-dom'
 
-function VehicleDetails() {
+function PartyDetails() {
   return (
     <div>
       <Navbar></Navbar>
@@ -14,8 +14,8 @@ function VehicleDetails() {
             Vehicle Details
             </h1>
             <div>
-                <NavLink to = "/addCar" className="btn  btn-primary text-[15px] pl-7 pr-7 " >
-                <i class="bi bi-plus-lg"></i> Car
+                <NavLink to = "/addparty" className="btn  btn-primary text-[15px] pl-7 pr-7 " >
+                <i class="bi bi-plus-lg"></i> Party
                 </NavLink>
             </div>
         </div>
@@ -24,8 +24,8 @@ function VehicleDetails() {
     {/* Example of vehicle cards */}
     {[...Array(5)].map((_, index) => (
         <div key={index} className="artboard artboard-demo w-80 h-48 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between">
-            <h3 className="text-lg font-semibold">Vehicle {index + 1}</h3>
-            <p className="text-gray-600">Details about vehicle {index + 1}.</p>
+            <h3 className="text-lg font-semibold">Party Name {index + 1}</h3>
+            <p className="text-gray-600">Details about party {index + 1}.</p>
             <button className="mt-2 btn btn-primary">View Details</button>
         </div>
     ))}
@@ -37,4 +37,4 @@ function VehicleDetails() {
   )
 }
 
-export default VehicleDetails
+export default PartyDetails

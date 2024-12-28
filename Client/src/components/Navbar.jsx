@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="fixed w-full bg-base-100 shadow-md z-10">
+    <div className="fixed w-full bg-base-100 shadow-md z-50">
       <div className="navbar container mx-auto max-w-[1400px]">
         {/* Left Icon Button */}
         <div className="flex-none">

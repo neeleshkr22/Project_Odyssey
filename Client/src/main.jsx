@@ -11,6 +11,11 @@ import CarForm from './Forms/CarForm.jsx'
 import DriverForm from './Forms/DriverForm.jsx'
 import VehicleDetails from './Master/VehicleDetails.jsx'
 import DriverDetails from './Master/DriverDetails.jsx'
+import OwnerDetails from './Master/OwnerDetails.jsx'
+import PartyForm from './Forms/PartyForm.jsx'
+import PartyDetails from './Master/PartyDetails.jsx'
+import TripDetails from './Master/TripDetails.jsx'
+import TripForm from './Forms/TripForm.jsx'
 
 
 
@@ -52,6 +57,29 @@ const router = createBrowserRouter([
     path: '/driver-master',
     element: <DriverDetails />
   },
+  {
+    path: '/owner-master',
+    element: <OwnerDetails />
+  },
+  {
+    path: '/addparty',
+    element: <PartyForm />
+  },
+  
+  {
+    path: '/party-master',
+    element: <PartyDetails />
+  },
+  {
+    path: '/trip-master',
+    element: <TripDetails />
+  },
+  {
+    path: '/addtrip',
+    element: <TripForm />
+  },
+
+
 ])
 
 const Root = () => {

@@ -37,6 +37,14 @@ const DriverForm = () => {
         <div>
             <Navbar />
             <Sidebar />
+
+            <div className="steps mt-24 z-10 ">
+                <ul className="steps w-[90vw] ml-[5.5rem] overflow-x-auto">
+                    <li className="step step-primary flex-shrink-0">Add Driver</li>
+                    <li className="step step-primary flex-shrink-0">Add Details</li>
+                    <li className="step flex-shrink-0">Submit</li>
+                </ul>
+            </div>
             <form onSubmit={handleSubmit} style={{ maxWidth: '82vw', margin: 'auto' }} className='mt-20 pt-20'>
                 <h2 className='text-xl font-semibold pb-3 border-b-2 pt-2'>Add Driver Details</h2>
                 <div className='mt-5'>
