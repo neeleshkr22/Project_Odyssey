@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Dashboard from './Dashboard'
-import { NavLink } from "react-router-dom";
+import Dashboard from './Dashboard'  
 import Sidebar from './Sidebar'
+import CarForm from '../Forms/CarForm'
 
 
 const MainPage = () => {
@@ -12,11 +12,12 @@ const MainPage = () => {
 
         <div className="main">
         {active === 'dashboard' && <div><Dashboard></Dashboard></div>}
-        </div>
+        {active === 'addcar' && <div><CarForm></CarForm></div>}
+        </div> 
 
         <div className="sidebar">
         <Sidebar></Sidebar>
-        </div>
+        </div> 
 
     
      

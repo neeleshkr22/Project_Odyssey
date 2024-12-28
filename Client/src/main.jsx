@@ -9,6 +9,10 @@ import Login from './components/Login.jsx'
 import { useThemeStore } from './components/useThemeStore'
 import CarForm from './Forms/CarForm.jsx'
 import DriverForm from './Forms/DriverForm.jsx'
+import VehicleDetails from './Master/VehicleDetails.jsx'
+import DriverDetails from './Master/DriverDetails.jsx'
+
+
 
 
 const router = createBrowserRouter([
@@ -39,6 +43,14 @@ const router = createBrowserRouter([
   {
     path: '/adddriver',
     element: <DriverForm />
+  },
+  {
+    path: '/vehicle-master',
+    element: <VehicleDetails />
+  },
+  {
+    path: '/driver-master',
+    element: <DriverDetails />
   },
 ])
 
