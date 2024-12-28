@@ -58,13 +58,13 @@ const Dashboard = () => {
       {/* Part 2 */}
       <div className=" w-[89vw] ml-20 mt-6">
         <div className="flex justify-between space-x-5"> 
-        <div className="artboard artboard-horizontal phone-4 bg-orange-300 rounded-3xl"></div>
-        <div className="artboard artboard-horizontal phone-1 bg-orange-300 rounded-3xl"></div>
+        <div className="artboard artboard-horizontal phone-4 bg-zinc-100 rounded-3xl"></div>
+        <div className="artboard artboard-horizontal phone-1 bg-zinc-100 rounded-3xl"></div>
         {/* <div className="artboard phone-1 bg-red-400">320×568</div>
         <div className="artboard phone-1 bg-red-400">320×568</div> */}
         </div>
       
-      <div className="flex justify-between">
+      <div className="flex justify-between text-neutral">
         <div className="stats stats-vertical lg:stats-horizontal mt-5 shadow w-[51.5vw]">
           <div className="stat pl-20 pr-20">
             <div className="stat-title">Downloads</div>

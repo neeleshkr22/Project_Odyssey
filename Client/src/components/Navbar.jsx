@@ -40,12 +40,12 @@ const Navbar = () => {
           </NavLink>
         </div>
  
-       <div className="flex-none space-x-2">
-        <NavLink to = "/addCar" className="btn btn-primary">
-            Add Car
+       <div className="space-x-2 ">
+        <NavLink to = "/addCar" className="btn  btn-primary text-[15px] pl-7 pr-7 ">
+        <i class="bi bi-plus-lg"></i> Car
         </NavLink>
-        <NavLink to="/addDriver" className="btn btn-primary">
-            Add Driver
+        <NavLink to="/addDriver" className="btn btn-primary text-[15px] pl-7 pr-7">
+        <i class="bi bi-plus-lg"></i> Driver
         </NavLink>
        </div>
       

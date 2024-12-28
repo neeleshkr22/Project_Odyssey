@@ -1,76 +1,118 @@
-// import React from 'react'
+
+// import React, { useState } from 'react';
 // import { NavLink } from "react-router-dom";
 
 // const Sidebar = () => {
+//   const [isMasterOpen, setIsMasterOpen] = useState(false); // State to manage Master submenu visibility
+
+//   const toggleMasterMenu = () => {
+//     setIsMasterOpen(!isMasterOpen);
+//   };
+
 //   return (
 //     <div>
 //       <div className="drawer">
 //         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 //         <div className="drawer-content">
+//           {/* Main content goes here */}
 //         </div>
 
 //         <div className="drawer-side">
 //           <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
-//           <ul className="menu bg-base-200 text-base-content min-h-full w-64 p-4  flex flex-col items-center space-y-5">
+//           <ul className="menu bg-base-200 text-base-content min-h-full w-64 p-4 flex flex-col items-center space-y-5">
 //             {/* Sidebar content here */}
-//             <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base mt-20'><i className="bi bi-house mr-5"></i>Home</p>
-//             <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'><i className="bi bi-house mr-5"></i>Master</p>
-//             <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'><i className="bi bi-house mr-5"></i>Reports</p>
-//             <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'><i className="bi bi-house mr-5"></i>Listing</p>
-//             <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'><i className="bi bi-house mr-5"></i>Maintenance</p>
-//               <div className=' absolute bottom-5'>
-//               <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'><i class="bi bi-box-arrow-left mr-5"></i>Logout</p>
-//               </div>
+//             <NavLink to="/" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base mt-20'>
+//               <i className="bi bi-house mr-5"></i>Home
+//             </NavLink>
+
+//             {/* Master Menu Item */}
+//             <li className='flex flex-col'>
+//               <button
+//                 onClick={toggleMasterMenu}
+//                 className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'
+//               >
+//                 <i className="bi bi-house mr-5"></i>Master
+//               </button>
+//               {isMasterOpen && (
+//                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
+//                   <NavLink to="/model-master" className='hover:bg-base-300 p-2 rounded-lg'>Model Master</NavLink>
+//                   <NavLink to="/trip-master" className='hover:bg-base-300 p-2 rounded-lg'>Trip Master</NavLink>
+//                   <NavLink to="/vehicle-master" className='hover:bg-base-300 p-2 rounded-lg'>Vehicle Master</NavLink>
+//                   <NavLink to="/party-master" className='hover:bg-base-300 p-2 rounded-lg'>Party Master</NavLink>
+//                   <NavLink to="/owner-master" className='hover:bg-base-300 p-2 rounded-lg'>Owner Master</NavLink>
+//                 </ul>
+//               )}
+//             </li>
+
+//             <NavLink to="/reports" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
+//               <i className="bi bi-house mr-5"></i>Reports
+//             </NavLink>
+
+//             <NavLink to="/listing" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
+//               <i className="bi bi-house mr-5"></i>Listing
+//             </NavLink>
+
+//             <NavLink to="/maintenance" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
+//               <i className="bi bi-house mr-5"></i>Enteries
+//             </NavLink>
+
+//             <div className='absolute bottom-5'>
+//               <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
+//                 <i className="bi bi-box-arrow-left mr-5"></i>Logout
+//               </p>
+//             </div>
 //           </ul>
 //         </div>
-//         </div>
+//       </div>
 
-//         <div className="drawer drawer-end">
-//             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-//                 <div className="drawer-content">
-    
+//       {/* Second Drawer (if needed) */}
+//       <div className="drawer drawer-end">
+//         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+//         <div className="drawer-content">
+//           {/* Main content goes here */}
 //         </div>
-//           <div className="drawer-side ">
-//             <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-//             <ul className="menu bg-base-200 text-base-content min-h-full w-48 p-4 mr-2">
-//               {/* Sidebar content here */}
-//               <div className='mt-20'></div>
-//               <div className=' flex flex-col z-50'>
-//                 {["login", "register", "Settings"].map((route) => (
-//                   <NavLink
+//         <div className="drawer-side ">
+//           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+//           <ul className="menu bg-base-200 text-base-content min-h-full w-48 p-4 mr-2">
+//             {/* Sidebar content here */}
+//             <div className='mt-20'></div>
+//             <div className='flex flex-col z-50'>
+//               {["login", "register", "Settings"].map((route) => (
+//                 <NavLink
 //                   key={route}
 //                   to={`/${route}`}
 //                   className={({ isActive }) =>
 //                     `btn btn-ghost transition duration-200 ${
-//                         isActive ? "text-primary" : ""
+//                       isActive ? "text-primary" : ""
 //                     }`
-//                 }
+//                   }
 //                 >
-//               {route.charAt(0).toUpperCase() + route.slice(1)}
-//             </NavLink>
-//           ))}
-//           </div>
-//             </ul>
-//           </div>
+//                   {route.charAt(0).toUpperCase() + route.slice(1)}
+//                 </NavLink>
+//               ))}
+//             </div>
+//           </ul>
 //         </div>
-
-
+//       </div>
 //     </div>
-//   )
+//   );
 // }
 
-// export default Sidebar
-
+// export default Sidebar;
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-  const [isMasterOpen, setIsMasterOpen] = useState(false); // State to manage Master submenu visibility
+  const [isMasterOpen, setIsMasterOpen] = useState(false);
+  const [isReportsOpen, setIsReportsOpen] = useState(false);
+  const [isEntriesOpen, setIsEntriesOpen] = useState(false);
+  const [isListingsOpen, setIsListingsOpen] = useState(false);
 
-  const toggleMasterMenu = () => {
-    setIsMasterOpen(!isMasterOpen);
-  };
+  const toggleMasterMenu = () => setIsMasterOpen(!isMasterOpen);
+  const toggleReportsMenu = () => setIsReportsOpen(!isReportsOpen);
+  const toggleEntriesMenu = () => setIsEntriesOpen(!isEntriesOpen);
+  const toggleListingsMenu = () => setIsListingsOpen(!isListingsOpen);
 
   return (
     <div>
@@ -108,21 +150,69 @@ const Sidebar = () => {
               )}
             </li>
 
-            <NavLink to="/reports" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
-              <i className="bi bi-house mr-5"></i>Reports
-            </NavLink>
+            {/* Reports Menu Item */}
+            <li className='flex flex-col'>
+              <button
+                onClick={toggleReportsMenu}
+                className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'
+              >
+                <i className="bi bi-file-earmark-text mr-5"></i>Reports
+              </button>
+              {isReportsOpen && (
+                <ul className='flex flex-col space-y-2 pl-10 mt-2'>
+                  <NavLink to="/duty-slip-printing" className='hover:bg-base-300 p-2 rounded-lg'>Duty Slip Printing</NavLink>
+                  <NavLink to="/invoice-printing" className='hover:bg-base-300 p-2 rounded-lg'>Invoice Printing</NavLink>
+                  <NavLink to="/fuel-filling-report" className='hover:bg-base-300 p-2 rounded-lg'>Fuel Filling Report</NavLink>
+                  <NavLink to="/servicing-report" className='hover:bg-base-300 p-2 rounded-lg'>Servicing Report</NavLink>
+                  <NavLink to="/daily-duty-chart" className='hover:bg-base-300 p-2 rounded-lg'>Daily Duty Chart</NavLink>
+                  <NavLink to="/hire-car" className='hover:bg-base-300 p-2 rounded-lg'>Hire Car</NavLink>
+                  <NavLink to="/business-report" className='hover:bg-base-300 p-2 rounded-lg'>Business Report</NavLink>
+                  <NavLink to="/pending-bill-report" className='hover:bg-base-300 p-2 rounded-lg'>Pending Bill Report</NavLink>
+                  <NavLink to="/hired-vehicle-report" className='hover:bg-base-300 p-2 rounded-lg'>Hired Vehicle Report</NavLink>
+                </ul>
+              )}
+            </li>
 
-            <NavLink to="/listing" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
-              <i className="bi bi-house mr-5"></i>Listing
-            </NavLink>
+            {/* Entries Menu Item */}
+            <li className='flex flex-col'>
+              <button
+                onClick={toggleEntriesMenu}
+                className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'
+              >
+                <i className="bi bi-file-earmark-plus mr-5"></i>Entries
+              </button>
+              {isEntriesOpen && (
+                <ul className='flex flex-col space-y-2 pl-10 mt-2'>
+                  {/* Add your entries sub-items here */}
+                  <NavLink to="/entry-type1" className='hover:bg-base-300 p-2 rounded-lg'>Entry Type 1</NavLink>
+                  <NavLink to="/entry-type2" className='hover:bg-base-300 p-2 rounded-lg'>Entry Type 2</NavLink>
+                  {/* Add more entries as needed */}
+                </ul>
+              )}
+            </li>
 
-            <NavLink to="/maintenance" className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
-              <i className="bi bi-house mr-5"></i>Enteries
-            </NavLink>
+            {/* Listings Menu Item */}
+            <li className='flex flex-col'>
+              <button
+                onClick={toggleListingsMenu}
+                className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-xl text-base'
+              >
+                <i className="bi bi-list-ul mr5"></i>Listings
+              </button>
+              {isListingsOpen && (
+                <ul className='flex flex-col space-y= 2 pl=10 mt= 2'>
+                  {/* Add your listings sub-items here */}
+                  <NavLink to="/listing-type1" className='hover:bg-base=300 p= 2 rounded-lg'>Listing Type 1</NavLink>
+                  <NavLink to="/listing-type2" className='hover:bg-base=300 p= 2 rounded-lg'>Listing Type 2</NavLink>
+                  {/* Add more listings as needed */}
+                </ul>
+              )}
+            </li>
 
-            <div className='absolute bottom-5'>
-              <p className='cursor-pointer flex hover:bg-base-300 pl-10 pr-10 pt-2 pb-2 rounded-3xl text-base'>
-                <i className="bi bi-box-arrow-left mr-5"></i>Logout
+            {/* Logout Button */}
+            <div className='absolute bottom=5'>
+              <p className='cursor-pointer flex hover:bg-base=300 pl=10 pr=10 pt= 2 pb= 2 rounded-xl text-base'>
+                <i className="bi bi-box-arrow-left mr=5"></i>Logout
               </p>
             </div>
           </ul>
@@ -130,34 +220,36 @@ const Sidebar = () => {
       </div>
 
       {/* Second Drawer (if needed) */}
-      <div className="drawer drawer-end">
-        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          {/* Main content goes here */}
-        </div>
-        <div className="drawer-side ">
-          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-48 p-4 mr-2">
-            {/* Sidebar content here */}
-            <div className='mt-20'></div>
-            <div className='flex flex-col z-50'>
-              {["login", "register", "Settings"].map((route) => (
-                <NavLink
-                  key={route}
-                  to={`/${route}`}
-                  className={({ isActive }) =>
-                    `btn btn-ghost transition duration-200 ${
-                      isActive ? "text-primary" : ""
-                    }`
-                  }
-                >
-                  {route.charAt(0).toUpperCase() + route.slice(1)}
-                </NavLink>
-              ))}
+           <div className="drawer drawer-end">
+              <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+              <div className="drawer-content">
+                {/* Main content goes here */}
+              </div>
+              <div className="drawer-side ">
+                <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                <ul className="menu bg-base-200 text-base-content min-h-full w-48 p-4 mr-2">
+                  {/* Sidebar content here */}
+                  <div className='mt-20'></div>
+                  <div className='flex flex-col z-50'>
+                    {["login", "register", "Settings"].map((route) => (
+                      <NavLink
+                        key={route}
+                        to={`/${route}`}
+                        className={({ isActive }) =>
+                          `btn btn-ghost transition duration-200 ${
+                            isActive ? "text-primary" : ""
+                          }`
+                        }
+                      >
+                        {route.charAt(0).toUpperCase() + route.slice(1)}
+                      </NavLink>
+                    ))}
+                  </div>
+                </ul>
+              </div>
             </div>
-          </ul>
-        </div>
-      </div>
+      
+
     </div>
   );
 }
