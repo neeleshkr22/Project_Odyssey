@@ -36,10 +36,19 @@ const Navbar = () => {
               }`
             }
           >
-            Cars
+            Cars 
           </NavLink>
         </div>
-
+ 
+       <div className="flex-none space-x-2">
+        <NavLink to = "/addCar" className="btn btn-primary">
+            Add Car
+        </NavLink>
+        <NavLink to="/addDriver" className="btn btn-primary">
+            Add Driver
+        </NavLink>
+       </div>
+      
 
 
         {/* Right Icon Button */}

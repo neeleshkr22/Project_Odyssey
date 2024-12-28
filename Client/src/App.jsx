@@ -5,7 +5,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import ThemeSettings from "./components/ThemeSettings";
 import MainPage from "./components/MainPage";
-
 const App = () => {
   return (
     <div className="h-screen bg-base-100">

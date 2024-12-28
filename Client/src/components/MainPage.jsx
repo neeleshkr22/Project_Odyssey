@@ -18,7 +18,7 @@ const MainPage = () => {
         <Sidebar></Sidebar>
         </div>
 
-
+    
      
     </div>
   )
