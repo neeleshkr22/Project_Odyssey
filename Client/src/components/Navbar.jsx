@@ -32,7 +32,7 @@ const Navbar = () => {
             to="/"
             className={({ isActive }) =>
               `btn btn-ghost text-xl transition duration-200 ${
-                isActive ? "text-primary" : ""
+                isActive ? "" : ""
               }`
             }
           >

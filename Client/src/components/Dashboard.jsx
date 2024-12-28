@@ -9,16 +9,17 @@ const Dashboard = () => {
   return (
     <div className='maindash h-[100vh] w-[89vw]'>
 
-      <div className='w-[89vw] ml-20 flex justify-between'> 
+      <div className='w-[89vw] ml-20 pt-3 flex justify-between'> 
 
         {/* GREETING */}
-        <div className="greet text-white">
-          <h1 className="text-4xl font-bold pt-2 text-white border-b pb-2">Dashboard</h1>
+        <div className="greet text-base">
+          <h1 className="text-4xl font-bold pt-2 border-b pb-2">Dashboard</h1>
           <p className=''>Welcome back, Modi!</p>
         </div>
 
         {/* DATE */}
-        <div className="flex justify-center  flex-row-reverse text-right items-center text-white">
+        <div className="flex justify-center  flex-row-reverse text-right items-center text-base">
+          
           <div className="w-16 h-16 rounded-full border-2 flex items-center justify-center">
             <span className="text-2xl font-bold">{day}</span>
           </div>
