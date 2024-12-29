@@ -65,7 +65,6 @@ const CarForm = () => {
                 }
             });
 
-            if (response.status === 200) {
                 alert('Car details successfully submitted!');
                 // Reset form after submission
                 setCarDetails({
@@ -89,9 +88,6 @@ const CarForm = () => {
                     ownerConntact: '',
                     ownerAddress: ''
                 });
-            } else {
-                alert('Error submitting car details');
-            }
         } catch (error) {
             console.error('Error:', error);
             alert('There was an error submitting your details.');

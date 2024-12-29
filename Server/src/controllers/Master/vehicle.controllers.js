@@ -1,8 +1,7 @@
-
 import Vehicle from '../../models/Vehicle.Model.js';
 
+// Function to handle vehicle form submission
 const vehicleForm = async (req, res) => {
-    
     const {
         VehicleType, comapnyName, modelNumber, registrationDate, licenceregistry,
         licenceNumber, color, fuelType, transmission, lastServiced, insuranceDetails,
@@ -52,17 +51,23 @@ const vehicleForm = async (req, res) => {
             error: error.message
         });
     }
-    
 }
 
+// Function to fetch all vehicles
 const vehicles = async (req, res) => {
+    
     try {
-        const vehicles = await Vehicle.find();  // Query the Vehicle collection
-        res.json(vehicles);  // Respond with the list of vehicles
+        const vehicleList = await Vehicle.find();  // Query the Vehicle collection
+
+        // Check if any vehicles were found
+        if (!vehicleList.length) {
+            return res.status(404).json({ message: 'No vehicles found' });
+        }
+        res.json(vehicleList);  // Respond with the list of vehicles
     } catch (error) {
         console.error('Error fetching vehicles:', error);
         res.status(500).json({ message: 'Error fetching vehicles', error: error.message });
     }
-} 
+}
 
-export { vehicleForm , vehicles };
+export { vehicleForm, vehicles };

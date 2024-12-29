@@ -1,8 +1,8 @@
 import express from "express";
 import { vehicleForm } from "../controllers/Master/vehicle.controllers.js";
 import { TripForm } from "../controllers/Master/trip.controllers.js";
-import { partyForm } from "../controllers/Master/party.controllers.js";
-import { driverForm } from "../controllers/Master/driver.controllers.js";
+import { parties, partyForm } from "../controllers/Master/party.controllers.js";
+import drivers, { driverForm } from "../controllers/Master/driver.controllers.js";
 import { vehicles } from "../controllers/Master/vehicle.controllers.js";
 
 
@@ -26,6 +26,14 @@ MasterRouter.post("/driverForm", (req, res) => {
 
 MasterRouter.get('/vehicles', async (req, res) => {
     vehicles(req, res);
+});
+
+MasterRouter.get('/drivers', async (req, res) => {
+    drivers(req, res);
+});
+
+MasterRouter.get('/parties', async (req, res) => {
+    parties(req, res);
 });
 
 

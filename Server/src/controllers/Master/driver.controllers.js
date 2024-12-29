@@ -42,3 +42,22 @@ export const driverForm = async (req, res) => {
     return res.status(500).json({ message: 'Error saving driver details', error });
   }
 };
+
+
+const drivers = async (req, res) => {
+    
+    try {
+        const DriverList = await Driver.find();  // Query the Vehicle collection
+
+        // Check if any vehicles were found
+        if (!DriverList.length) {
+            return res.status(404).json({ message: 'No driver found' });
+        }
+        res.json(DriverList);  // Respond with the list of vehicles
+    } catch (error) {
+        console.error('Error fetching Drivers:', error);
+        res.status(500).json({ message: 'Error fetching vehicles', error: error.message });
+    }
+}
+
+export default drivers;

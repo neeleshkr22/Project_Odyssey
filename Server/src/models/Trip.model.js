@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+
 const tripSchema = new mongoose.Schema({
   vehicle: {
     type: mongoose.Schema.Types.ObjectId,
@@ -9,12 +10,12 @@ const tripSchema = new mongoose.Schema({
   driver: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Driver',
-    required: true,
+    required: false,
   },
   party: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Party', 
-    required: true,
+    required: false,
   },
   tripStartLocation: {
     type: String,

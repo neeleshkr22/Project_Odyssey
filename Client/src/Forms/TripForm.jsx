@@ -31,19 +31,29 @@ const TripForm = () => {
 
     // Fetch data for vehicles, drivers, and parties (You can modify this according to your API)
     useEffect(() => {
-        axios.get('http://localhost:3001/vehicles')
-            .then(response => setVehicles(response.data))
-            .catch(error => console.error('Error fetching vehicles:', error));
-            console.log(vehicles);
-
-        axios.get('http://localhost:3001/drivers')
-            .then(response => setDrivers(response.data))
-            .catch(error => console.error('Error fetching drivers:', error));
-
-        axios.get('http://localhost:3001/parties')
-            .then(response => setParties(response.data))
-            .catch(error => console.error('Error fetching parties:', error));
+        const fetchData = async () => {
+            try {
+                // Fetch vehicles
+                const vehiclesResponse = await axios.get('http://localhost:3001/vehicles');
+                setVehicles(vehiclesResponse.data);
+                console.log('Vehicles:', vehiclesResponse.data);
+    
+                // Fetch drivers
+                const driversResponse = await axios.get('http://localhost:3001/drivers');
+                setDrivers(driversResponse.data);
+                console.log('Drivers:', driversResponse.data);
+    
+                // Fetch parties
+                const partiesResponse = await axios.get('http://localhost:3001/parties');
+                setParties(partiesResponse.data);
+                console.log('Parties:', partiesResponse.data);
+            } catch (err) {
+                console.error('Error fetching data:', err.message);
+            }
+        };
+        fetchData();
     }, []);
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -122,23 +132,25 @@ const TripForm = () => {
             <Navbar />
             <Sidebar />
 
-            <div className="container mx-auto mt-10 p-5 bg-white shadow-lg rounded-lg">
+            <div className="container mx-auto mt-10 p-5 pt-10 bg-white shadow-lg rounded-lg w-4/5">
                 <h2 className='text-2xl font-bold text-center mb-6'>Add Trip Details</h2>
+                
+                
                 <form onSubmit={handleSubmit}>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         {/* Vehicle */}
                         <div>
-                            <label className='block text-sm font-medium text-gray-700'>Vehicle ID:</label>
+                            <label className='block text-sm font-medium text-gray-700'>Driver ID:</label>
                             <select 
                                 name="vehicle" 
                                 value={tripDetails.vehicle} 
                                 onChange={handleChange} 
                                 required
                                 className='mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2'>
-                                <option value="">Select Vehicle</option>
-                                {vehicles.map(vehicle => (
-                                    <option key={vehicle._id} value={vehicle._id}>
-                                        {vehicle.name} - {vehicle.model}
+                                <option value="">Select Driver</option>
+                                {vehicles.map(veh => (
+                                    <option key={veh._id} value={veh._id}>
+                                        {veh._id}
                                     </option>
                                 ))}
                             </select>
@@ -282,11 +294,29 @@ const TripForm = () => {
                     </div>
 
                     {/* Buttons */}
-                    <div className='flex justify-between space-x-5 mt-6'> 
-                        <button type="button" className='bg-red-600 hover:bg-red-700 text-white w-full md:w-auto px-4 py-2 rounded transition duration-200'>
+                    <div className="flex justify-between space-x-5">
+                        <button
+                            type="button"
+                            className="bg-error text-white w-1/2 hover:bg-red-500"
+                            style={{
+                                padding: '10px 15px',
+                                borderRadius: '5px',
+                                cursor: 'pointer',
+                                border: 'none',
+                            }}
+                        >
                             Cancel
                         </button>
-                        <button type="submit" className='bg-blue-600 hover:bg-blue-700 text-white w-full md:w-auto px-4 py-2 rounded transition duration=200'>
+                        <button
+                            type="submit"
+                            className="bg-primary text-white w-1/2 btn btn-primary"
+                            style={{
+                                padding: '10px 15px',
+                                borderRadius: '5px',
+                                cursor: 'pointer',
+                                border: 'none',
+                            }}
+                        >
                             Submit
                         </button>
                     </div>
