@@ -9,10 +9,15 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173', // Your local development origin
+  'https://31d8-103-127-224-135.ngrok-free.app', // Your ngrok URL
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend URL
-  credentials: true, // Allow credentials (cookies, headers)
-}));  
+  origin: allowedOrigins,
+  credentials: true, // Allow cookies if needed
+})); 
 
 const port = process.env.PORT || 3001;
 

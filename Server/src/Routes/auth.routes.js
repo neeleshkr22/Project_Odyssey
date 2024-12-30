@@ -4,10 +4,6 @@ import cors from "cors";
 
 
 const Router = express.Router();
-Router.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
-  }));  
 
 Router.post("/signup", (req, res) => {
     signup(req, res);
