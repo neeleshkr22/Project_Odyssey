@@ -21,7 +21,6 @@ const CarForm = () => {
             expiryDate: ''
         },
         status: 'Active',
-        fuelQuantity: '',
         ownerName: '',
         ownerConntact: '',
         ownerAddress: ''
@@ -65,29 +64,29 @@ const CarForm = () => {
                 }
             });
 
-                alert('Car details successfully submitted!');
-                // Reset form after submission
-                setCarDetails({
-                    VehicleType: '',
-                    comapnyName: '',
-                    modelNumber: '',
-                    registrationDate: '',
-                    licenceregistry: false,
-                    licenceNumber: '',
-                    color: '',
-                    fuelType: '',
-                    transmission: '',
-                    lastServiced: '',
-                    insuranceDetails: {
-                        provider: '',
-                        policyNumber: '',
-                        expiryDate: ''
-                    },
-                    status: 'Active',
-                    ownerName: '',
-                    ownerConntact: '',
-                    ownerAddress: ''
-                });
+            alert('Car details successfully submitted!');
+            // Reset form after submission
+            setCarDetails({
+                VehicleType: '',
+                comapnyName: '',
+                modelNumber: '',
+                registrationDate: '',
+                licenceregistry: false,
+                licenceNumber: '',
+                color: '',
+                fuelType: '',
+                transmission: '',
+                lastServiced: '',
+                insuranceDetails: {
+                    provider: '',
+                    policyNumber: '',
+                    expiryDate: ''
+                },
+                status: 'Active',
+                ownerName: '',
+                ownerConntact: '',
+                ownerAddress: ''
+            });
         } catch (error) {
             console.error('Error:', error);
             alert('There was an error submitting your details.');
@@ -95,32 +94,33 @@ const CarForm = () => {
     };
 
     return (
-        <div>
+        <div className="bg-gray-100 min-h-screen">
             <Navbar />
             <Sidebar />
 
-            <div className="steps mt-24 z-10">
-                <ul className="steps w-[90vw] ml-[5.5rem] overflow-x-auto">
+
+            <form onSubmit={handleSubmit} className="max-w-4xl mx-auto mt-20 p-8 bg-white shadow-md rounded-lg">
+
+            <div className="steps mt-5 z-10">
+                <ul className="steps w-[60vw] -ml-10 overflow-x-auto">
                     <li className="step step-primary flex-shrink-0">Add Vehicle</li>
                     <li className="step step-primary flex-shrink-0">Add Details</li>
                     <li className="step flex-shrink-0">Submit</li>
                 </ul>
             </div>
+                <h2 className="text-2xl font-semibold pb-3 border-b-2 mt-10">Add Vehicle Details</h2>
 
-            <form onSubmit={handleSubmit} style={{ maxWidth: '82vw', margin: 'auto' }} className="mt-20 pt-20">
-                <h2 className="text-xl font-semibold pb-3 border-b-2 pt-2">Add Vehicle Details</h2>
-
-                <div className="mt-5">
+                <div className="mt-5 space-y-4">
                     {/* Vehicle Details */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Vehicle Type:
                             <select
                                 name="VehicleType"
                                 value={carDetails.VehicleType}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 block w-full border-2 border-gray-200 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             >
                                 <option value="">Select Type</option>
                                 <option value="Car">Car</option>
@@ -131,8 +131,8 @@ const CarForm = () => {
                     </div>
 
                     {/* Company Name */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                     <label className="block text-sm font-medium text-gray-700">
                             Company Name:
                             <input
                                 type="text"
@@ -140,14 +140,14 @@ const CarForm = () => {
                                 value={carDetails.comapnyName}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Model Number */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Model Number:
                             <input
                                 type="number"
@@ -155,40 +155,42 @@ const CarForm = () => {
                                 value={carDetails.modelNumber}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Registration Date */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Registration Date:
                             <input
                                 type="date"
                                 name="registrationDate"
                                 value={carDetails.registrationDate}
                                 onChange={handleChange}
+                                className="mt-1 p-1  block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* License Registry */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
-                            License Registry:
+                    <div>
+                        <label className="flex items-center">
+                            License Registry
                             <input
                                 type="checkbox"
                                 name="licenceregistry"
                                 checked={carDetails.licenceregistry}
                                 onChange={handleChange}
+                                className="mr-2"
                             />
                         </label>
                     </div>
 
                     {/* License Number */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             License Number:
                             <input
                                 type="number"
@@ -196,13 +198,14 @@ const CarForm = () => {
                                 value={carDetails.licenceNumber}
                                 onChange={handleChange}
                                 required
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Color */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Color:
                             <input
                                 type="text"
@@ -210,20 +213,21 @@ const CarForm = () => {
                                 value={carDetails.color}
                                 onChange={handleChange}
                                 required
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Fuel Type */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Fuel Type:
                             <select
                                 name="fuelType"
                                 value={carDetails.fuelType}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-200 border-2 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             >
                                 <option value="">Select Fuel Type</option>
                                 <option value="petrol">Petrol</option>
@@ -233,15 +237,15 @@ const CarForm = () => {
                     </div>
 
                     {/* Transmission */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Transmission:
                             <select
                                 name="transmission"
                                 value={carDetails.transmission}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-200 border-2 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             >
                                 <option value="">Select Transmission</option>
                                 <option value="semi-automatic">Semi-Automatic</option>
@@ -252,8 +256,8 @@ const CarForm = () => {
                     </div>
 
                     {/* Last Serviced */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Last Serviced:
                             <input
                                 type="date"
@@ -261,55 +265,59 @@ const CarForm = () => {
                                 value={carDetails.lastServiced}
                                 onChange={handleChange}
                                 required
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Insurance Details */}
-                    <h3 className="text-lg font-semibold">Insurance Details</h3>
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <h2 className="text-2xl font-semibold pb-3 border-b-2 mt-24 pt-10">Add Insurance Details</h2>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Provider:
                             <input
                                 type="text"
                                 name="insuranceDetails.provider"
                                 value={carDetails.insuranceDetails.provider}
                                 onChange={handleChange}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Policy Number:
                             <input
                                 type="text"
                                 name="insuranceDetails.policyNumber"
                                 value={carDetails.insuranceDetails.policyNumber}
                                 onChange={handleChange}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Expiry Date:
                             <input
                                 type="date"
                                 name="insuranceDetails.expiryDate"
                                 value={carDetails.insuranceDetails.expiryDate}
                                 onChange={handleChange}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Status */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Status:
                             <select
                                 name="status"
                                 value={carDetails.status}
                                 onChange={handleChange}
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-200 border-2 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             >
                                 <option value="Active">Active</option>
                                 <option value="Inactive">Inactive</option>
@@ -320,9 +328,9 @@ const CarForm = () => {
                     </div>
 
                     {/* Owner Details */}
-                    <h3 className="text-lg font-semibold">Owner Details</h3>
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <h2 className="text-2xl font-semibold pb-3 border-b-2 mt-10 pt-10">Add Owner Details</h2>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Owner Name:
                             <input
                                 type="text"
@@ -330,11 +338,12 @@ const CarForm = () => {
                                 value={carDetails.ownerName}
                                 onChange={handleChange}
                                 required
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Owner Contact:
                             <input
                                 type="number"
@@ -342,11 +351,12 @@ const CarForm = () => {
                                 value={carDetails.ownerConntact}
                                 onChange={handleChange}
                                 required
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Owner Address:
                             <input
                                 type="text"
@@ -354,23 +364,22 @@ const CarForm = () => {
                                 value={carDetails.ownerAddress}
                                 onChange={handleChange}
                                 required
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex justify-between space-x-5">
+                    <div className="flex justify-between space-x-5 mt-6">
                         <button
                             type="button"
-                            className="bg-error text-white w-1/2 hover:bg-red-500"
-                            style={{ padding: '10px 15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                            className="bg-red-500 text-white w-1/2 hover:bg-red-600 rounded-md py-2"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
-                            className="bg-primary text-white w-1/2 btn btn-primary"
-                            style={{ padding: '10px 15px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                            className="bg-blue-500 text-white w-1/2 hover:bg-blue-600 rounded-md py-2"
                         >
                             Submit
                         </button>

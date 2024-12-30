@@ -6,7 +6,7 @@ import axios from 'axios';  // To make HTTP requests
 const DriverForm = () => {
     const [driverDetails, setDriverDetails] = useState({
         name: '',
-        contact: '',  // Change 'contact' to 'contactNumber'
+        contact: '',
         email: '',
         address: '',
         licenseNumber: '',
@@ -72,28 +72,28 @@ const DriverForm = () => {
     };
 
     return (
-        <div>
+        <div className="bg-gray-100 min-h-screen">
             <Navbar />
             <Sidebar />
 
-            <div className="steps mt-24 z-10 ">
-                <ul className="steps w-[90vw] ml-[5.5rem] overflow-x-auto">
+
+            <form
+                onSubmit={handleSubmit}
+                className="max-w-4xl mx-auto mt-20 p-8 bg-white shadow-md rounded-lg"
+            >
+            <div className="steps mt-5 -ml-10 z-10">
+                <ul className="steps w-[60vw] overflow-x-auto">
                     <li className="step step-primary flex-shrink-0">Add Driver</li>
                     <li className="step step-primary flex-shrink-0">Add Details</li>
                     <li className="step flex-shrink-0">Submit</li>
                 </ul>
             </div>
 
-            <form
-                onSubmit={handleSubmit}
-                style={{ maxWidth: '82vw', margin: 'auto' }}
-                className="mt-20 pt-20"
-            >
-                <h2 className="text-xl font-semibold pb-3 border-b-2 pt-2">Add Driver Details</h2>
-                <div className="mt-5">
+                <h2 className="text-2xl font-semibold pb-3 border-b-2 mt-8">Add Driver Details</h2>
+                <div className="mt-5 space-y-4">
                     {/* Name */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Name:
                             <input
                                 type="text"
@@ -101,14 +101,14 @@ const DriverForm = () => {
                                 value={driverDetails.name}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Contact Number */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Contact Number:
                             <input
                                 type="text"
@@ -116,14 +116,14 @@ const DriverForm = () => {
                                 value={driverDetails.contact}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Email */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Email:
                             <input
                                 type="email"
@@ -131,14 +131,14 @@ const DriverForm = () => {
                                 value={driverDetails.email}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Address */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Address:
                             <input
                                 type="text"
@@ -146,14 +146,14 @@ const DriverForm = () => {
                                 value={driverDetails.address}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* License Number */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             License Number:
                             <input
                                 type="text"
@@ -161,14 +161,14 @@ const DriverForm = () => {
                                 value={driverDetails.licenseNumber}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* License Expiry Date */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             License Expiry Date:
                             <input
                                 type="date"
@@ -176,48 +176,48 @@ const DriverForm = () => {
                                 value={driverDetails.licenseExpiryDate}
                                 onChange={handleChange}
                                 required
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Driving Experience */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Driving Experience (Years):
                             <input
                                 type="number"
                                 name="drivingExperience"
                                 value={driverDetails.drivingExperience}
                                 onChange={handleChange}
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Certifications */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Certifications (comma-separated):
                             <input
                                 type="text"
                                 name="certifications"
                                 value={driverDetails.certifications.join(', ')}
                                 onChange={handleCertificationsChange}
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             />
                         </label>
                     </div>
 
                     {/* Status */}
-                    <div style={{ marginBottom: '15px' }}>
-                        <label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">
                             Status:
                             <select
                                 name="status"
                                 value={driverDetails.status}
                                 onChange={handleChange}
-                                style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+                                className="mt-1 p-1 block w-full border-gray-200 border-2 rounded-md shadow-sm focus:ring focus:ring-blue-500"
                             >
                                 <option value="Available">Available</option>
                                 <option value="On Duty">On Duty</option>
@@ -228,28 +228,16 @@ const DriverForm = () => {
                     </div>
 
                     {/* Submit and Cancel Buttons */}
-                    <div className="flex justify-between space-x-5">
+                    <div className="flex justify-between space-x-5 mt-6">
                         <button
                             type="button"
-                            className="bg-error text-white w-1/2 hover:bg-red-500"
-                            style={{
-                                padding: '10px 15px',
-                                border: 'none',
-                                borderRadius: '5px',
-                                cursor: 'pointer',
-                            }}
+                            className="bg-red-500 text-white w-1/2 hover:bg-red-600 rounded-md py-2"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
-                            className="bg-primary text-white w-1/2 btn btn-primary"
-                            style={{
-                                padding: '10px 15px',
-                                border: 'none',
-                                borderRadius: '5px',
-                                cursor: 'pointer',
-                            }}
+                            className="bg-blue-500 text-white w-1/2 hover:bg-blue-600 rounded-md py-2"
                         >
                             Submit
                         </button>

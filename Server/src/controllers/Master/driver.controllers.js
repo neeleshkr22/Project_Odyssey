@@ -60,4 +60,12 @@ const drivers = async (req, res) => {
     }
 }
 
+export const driverInfo = async (req, res) => {
+    const { id } = req.params;
+    const DriverData = await Driver.findById(id);
+    res.send(DriverData);
+}
+
+
+
 export default drivers;

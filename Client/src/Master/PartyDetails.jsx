@@ -45,11 +45,11 @@ function PartyDetails() {
           partyList.map((party, index) => (
             <div
               key={index}
-              className="artboard artboard-demo w-[30%] h-48 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between"
+              className=" w-[30%] h-48 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between"
             >
               <h3 className="text-lg font-semibold">{party.name}</h3>
               <p className="text-grey-600">Address: {party.address}</p>
-              <p className="text-grey-600">Contact: {party.ContactNumber}</p>
+              <p className="text-grey-600">Contact: {party.contactNumber}</p>
               <button className="mt-2 btn btn-primary">View Details</button>
             </div>
           ))

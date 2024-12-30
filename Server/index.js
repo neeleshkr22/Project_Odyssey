@@ -10,9 +10,10 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
-  'http://localhost:5173', // Your local development origin
-  'https://31d8-103-127-224-135.ngrok-free.app', // Your ngrok URL
+  'http://localhost:5173', // Same as above
+  'https://4ce4-103-80-22-106.ngrok-free.app'
 ];
+
 
 app.use(cors({
   origin: allowedOrigins,

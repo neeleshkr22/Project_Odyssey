@@ -47,7 +47,10 @@ function VehicleDetails() {
             <p className="text-gray-600">{vehicle.licenceNumber}</p>
             <p className="text-gray-600">{vehicle.fuelType}</p>
             <div>
+            <NavLink to={`/vehicle/${vehicle._id}`}>
               <button className="mt-2 btn btn-primary relative top-5 w-2/3">View Details</button>
+
+            </NavLink>
             </div>
             </div>
 

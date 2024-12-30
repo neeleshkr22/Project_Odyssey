@@ -140,7 +140,7 @@ const TripForm = () => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         {/* Vehicle */}
                         <div>
-                            <label className='block text-sm font-medium text-gray-700'>Driver ID:</label>
+                            <label className='block text-sm font-medium text-gray-700'>Vehicle ID:</label>
                             <select 
                                 name="vehicle" 
                                 value={tripDetails.vehicle} 

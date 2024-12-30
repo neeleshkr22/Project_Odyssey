@@ -70,4 +70,11 @@ const vehicles = async (req, res) => {
     }
 }
 
-export { vehicleForm, vehicles };
+const vehiclesInfo = async (req, res) => {
+    const { id } = req.params;
+    const vehicleData = await Vehicle.findById(id);
+    res.send(vehicleData);
+}
+
+
+export { vehicleForm, vehicles , vehiclesInfo };

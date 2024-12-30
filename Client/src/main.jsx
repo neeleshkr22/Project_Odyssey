@@ -16,6 +16,8 @@ import PartyForm from './Forms/PartyForm.jsx'
 import PartyDetails from './Master/PartyDetails.jsx'
 import TripDetails from './Master/TripDetails.jsx'
 import TripForm from './Forms/TripForm.jsx'
+import VehiclePage from './Master/VehiclePage.jsx'
+import DriverPage from './Master/DriverPage.jsx'
 
 
 
@@ -77,6 +79,14 @@ const router = createBrowserRouter([
   {
     path: '/addtrip',
     element: <TripForm />
+  },
+  {
+    path: '/vehicle/:id',
+    element: <VehiclePage />
+  },
+  {
+    path: '/driver/:id',
+    element: <DriverPage />
   },
 
 
