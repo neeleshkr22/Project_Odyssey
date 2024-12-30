@@ -32,6 +32,7 @@ MasterRouter.get('/vehicles', async (req, res) => {
 MasterRouter.get('/vehicles/:id', async (req, res) => {
     vehiclesInfo(req, res);
 });
+
 MasterRouter.get('/driver/:id', async (req, res) => {
     driverInfo(req, res);
 });

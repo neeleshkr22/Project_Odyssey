@@ -10,12 +10,7 @@ const App = () => {
     <div className="h-screen bg-base-100">
       <Navbar />
       <div className="pt-16"> {}
-        <Routes>
-          <Route path="/" element={<MainPage></MainPage>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/settings" element={<ThemeSettings />} />
-        </Routes>
+        <MainPage></MainPage>
       </div>
     </div>
   );

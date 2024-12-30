@@ -147,7 +147,7 @@ const TripForm = () => {
                                 onChange={handleChange} 
                                 required
                                 className='mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2'>
-                                <option value="">Select Driver</option>
+                                <option value="">Select Vehicle</option>
                                 {vehicles.map(veh => (
                                     <option key={veh._id} value={veh._id}>
                                         {veh._id}

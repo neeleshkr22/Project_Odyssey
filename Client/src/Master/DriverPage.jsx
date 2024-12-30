@@ -8,20 +8,29 @@ import axios from 'axios';
 const DriverPage = () => {
     const { id } = useParams();
     const [driver, setDriver] = useState(null);
+    const [loading, setLoading] = useState(true); // For loading state
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3001/driver/${id}`);
                 console.log('Driver:', response.data);
-                setDriver(response.data); // Save the single object
+                setDriver(response.data);
+                setLoading(false);
             } catch (err) {
                 console.error('Error fetching data:', err.message);
+                setLoading(false);
             }
         };
         fetchData();
     }, [id]);
 
+    // Show loading state while data is being fetched
+    if (loading) {
+        return <div>Loading driver details...</div>;
+    }
+
+    // Render the driver details if available
     return (
         <div className="bg-gray-50 min-h-screen">
             <Navbar />
@@ -33,47 +42,96 @@ const DriverPage = () => {
                         <div className="bg-white shadow-md rounded-2xl w-3/6 p-5 text-base mt-20">
                             <h1 className="text-3xl font-semibold text-gray-800 border-b-2 pb-2">Driver Details</h1>
                             <div className='mt-3'>
-
-                                {[
-                                    { label: "Name:", value: driver.name },
-                                    { label: "License Number:", value: driver.licenseNumber },
-                                    { label: "Contact Number:", value: driver.contact },
-                                    { label: "Address:", value: driver.address },
-                                    {label: "Driving Experience: ", value: driver.drivingExperience},
-                                    {label: "status: ", value: driver.status },
-                                    {label: "certifications: ", value: driver.certifications },
-                                    
-                                ].map((item, index) => (
+                                {[{
+                                    label: "Name:", value: driver.DriverData.name
+                                }, {
+                                    label: "License Number:", value: driver.DriverData.licenseNumber
+                                }, {
+                                    label: "Contact Number:", value: driver.DriverData.contact
+                                }, {
+                                    label: "Address:", value: driver.DriverData.address
+                                }, {
+                                    label: "Driving Experience:", value: driver.DriverData.drivingExperience
+                                }, {
+                                    label: "Status:", value: driver.DriverData.status
+                                }, {
+                                    label: "Certifications:", value: driver.DriverData.certifications
+                                }].map((item, index) => (
                                     <div key={index} className="flex justify-between border-b border-gray-200 py-2">
                                         <h3 className="font-medium text-gray-600">{item.label}</h3>
-                                        <p className="text-gray-800">{item.value}</p>
+                                        <p className="text-gray-800">{item.value || 'Not available'}</p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="bg-white shadow-md rounded-2xl w-1/4 p-5 text-base mt-20">
-                            <h1 className="text-3xl font-semibold text-gray-800 border-b-2 pb-2">Assigned Vehicles</h1>
-                            {driver.assignedVehicles.length > 0 ? (
-                                driver.assignedVehicles.map(vehicle => (
-                                    <div key={vehicle._id} className="flex justify-between border-b border-gray-200 py-2">
-                                        <h3 className="font-medium text-gray-600">{vehicle.VehicleType} - {vehicle.licenceNumber}</h3>
-                                        <p className="text-gray-800">{vehicle.status}</p>
+                        <div className="bg-white shadow-md rounded-2xl w-2/5 p-5 text-base mt-20">
+                            <h1 className="text-3xl font-semibold text-gray-800 border-b-2 pb-2">
+                                Assigned Vehicles
+                            </h1>
+                            {driver.TripData && driver.TripData.length > 0 ? (
+                                driver.TripData.map((trip, index) => (
+                                    <div key={index} className="border-b pt-5 pb-5 border-gray-200 py-2">
+                                        <div className="flex justify-between text-gray-800">
+                                            <span className="font-semibold">Model Number:</span>
+                                            <span>{trip.vehicle.modelNumber}</span>
+                                        </div>
+                                        <div className="flex justify-between text-gray-800">
+                                            <span className="font-semibold">Color:</span>
+                                            <span>{trip.vehicle.color}</span>
+                                        </div>
+                                        <div className="flex justify-between text-gray-800">
+                                            <span className="font-semibold">Company Name:</span>
+                                            <span>{trip.vehicle.comapnyName}</span>
+                                        </div>
+                                        <div className="flex justify-between text-gray-800">
+                                            <span className="font-semibold">Vehicle ID:</span>
+                                            <span>{trip.vehicle._id}</span>
+                                        </div>
                                     </div>
                                 ))
                             ) : (
                                 <p>No assigned vehicles.</p>
                             )}
                         </div>
-
-                        
                     </div>
-                    
-
                 ) : (
-                    <p>Loading driver details...</p>
+                    <p>No driver details available.</p>
                 )}
             </div>
+
+            <div className=' flex justify-center mb-10 '>
+                <div className="bg-white shadow-lg rounded-2xl w-[88%] p-5 text-base mt-6">
+                    <h1 className="text-3xl font-semibold text-gray-800 border-b-2 pb-2">
+                        Trips
+                    </h1>
+                    {driver.TripData && driver.TripData.length > 0 ? (
+                        driver.TripData.map((trip, index) => (
+                            <div key={index} className="border-b pt-5 pb-5 border-gray-200 py-2">
+                                <div className="flex justify-between text-gray-800 pt-2">
+                                    <span className="font-semibold">Party ID:</span>
+                                    <span>{trip.party}</span>
+                                </div>
+                                <div className="flex justify-between text-gray-800 pt-2">
+                                    <span className="font-semibold">Vehicle ID:</span>
+                                    <span>{trip.vehicle._id}</span>
+                                </div>
+                                <div className="flex justify-between text-gray-800 pt-2">
+                                    <span className="font-semibold">Start Date</span>
+                                    <span>{trip.startDate}</span>
+                                </div>
+                                <div className="flex justify-between text-gray-800 pt-2">
+                                    <span className="font-semibold">End Date</span>
+                                    <span>{trip.endDate}</span>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No trips available.</p>
+                    )}
+                </div>
+            </div>
+
         </div>
     );
 }

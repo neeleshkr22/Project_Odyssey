@@ -19,9 +19,6 @@ import TripForm from './Forms/TripForm.jsx'
 import VehiclePage from './Master/VehiclePage.jsx'
 import DriverPage from './Master/DriverPage.jsx'
 
-
-
-
 const router = createBrowserRouter([
   {
     path: '/',

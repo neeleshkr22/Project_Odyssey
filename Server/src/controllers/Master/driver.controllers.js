@@ -1,4 +1,5 @@
 import Driver from '../../models/Driver.model.js';
+import Trip from '../../models/Trip.model.js';
 
 export const driverForm = async (req, res) => {
   try {
@@ -61,10 +62,29 @@ const drivers = async (req, res) => {
 }
 
 export const driverInfo = async (req, res) => {
+  try {
     const { id } = req.params;
+
+    // Fetch the driver data
     const DriverData = await Driver.findById(id);
-    res.send(DriverData);
-}
+
+    // If driver not found, send a 404 response
+    if (!DriverData) {
+      return res.status(404).json({ message: 'Driver not found' });
+    }
+
+    // Fetch the trips for the driver and populate vehicle details
+    const TripData = await Trip.find({ driver: id }).populate('vehicle', 'modelNumber color comapnyName');
+
+    // Return driver data and trips, even if no trips exist
+    res.json({ DriverData, TripData });
+  } catch (error) {
+    console.error("Error fetching driver or trip data:", error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
 
 
 

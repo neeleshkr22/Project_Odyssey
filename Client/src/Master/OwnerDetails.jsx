@@ -8,7 +8,6 @@ import bman from '../../assets/bman.png';
 
 const OwnerDetails = () => {
   const [vehicles, setVehicles] = useState([]);
-  const navigate = useNavigate();
   
 
   useEffect(() => {
