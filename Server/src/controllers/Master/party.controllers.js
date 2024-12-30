@@ -1,5 +1,6 @@
 import Party from "../../models/Party.model.js"
-
+import Vehicle from "../../models/Vehicle.Model.js";
+import Trip from "../../models/Trip.model.js";
 const partyForm = async (req, res) => {
     try {
         
@@ -48,6 +49,23 @@ const parties = async (req, res) => {
         res.status(500).json({ message: 'Error fetching parties', error: error.message });
     }
 }
+
+export const partyInfo = async (req, res) => {
+    const { id } = req.params;
+    
+    try {
+        // Fetch party data by ID
+        const partyData = await Party.findById(id);
+        
+        // Fetch Trip data associated with the party and populate vehicle details
+        const tripData = await Trip.find({ party: id }).populate('vehicle', 'modelNumber color companyName');
+        
+        // Send both party and trip data as a response
+        res.json({ party: partyData, trips: tripData });
+    } catch (err) {
+        res.status(500).send({ message: "Error fetching data", error: err.message });
+    }
+};
 
 
 export { partyForm, parties };

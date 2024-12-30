@@ -50,7 +50,9 @@ function PartyDetails() {
               <h3 className="text-lg font-semibold">{party.name}</h3>
               <p className="text-grey-600">Address: {party.address}</p>
               <p className="text-grey-600">Contact: {party.contactNumber}</p>
+              <NavLink to={`/party/${party._id}`}>
               <button className="mt-2 btn btn-primary">View Details</button>
+              </NavLink>
             </div>
           ))
         ) : (

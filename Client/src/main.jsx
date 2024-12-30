@@ -18,6 +18,8 @@ import TripDetails from './Master/TripDetails.jsx'
 import TripForm from './Forms/TripForm.jsx'
 import VehiclePage from './Master/VehiclePage.jsx'
 import DriverPage from './Master/DriverPage.jsx'
+import PartyPage from './Master/PartyPage.jsx'
+import MaintenanceForm from './Master/MaintenanceForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -84,6 +86,14 @@ const router = createBrowserRouter([
   {
     path: '/driver/:id',
     element: <DriverPage />
+  },
+  {
+    path: '/party/:id',
+    element: <PartyPage />
+  },
+  {
+    path: '/maintenance/:id',
+    element: <MaintenanceForm />
   },
 
 

@@ -67,11 +67,10 @@ const vehicleSchema = new mongoose.Schema({
         default: 'Active',
     },
 
-    fuelQuantity: {
+    fuel: {
         type: Number,
         required: false,
     },
-
     ownerName: {
         type: String,
         required: true,
