@@ -38,21 +38,21 @@ const VehiclePage = () => {
             <div className=" flex justify-center gap-5 mt-20">
               <div className="bg-gray-50 shadow-md rounded-2xl w-3/6 p-5 text-base">
                 {[
-                  { label: "Vehicle Type :", value: vehicle.VehicleType },
-                  { label: "Vehicle Number :", value: vehicle.licenceNumber },
-                  { label: "Company Name :", value: vehicle.comapnyName },
-                  { label: "Color :", value: vehicle.color },
-                  { label: "Fuel Type :", value: vehicle.fuelType },
-                  { label: "Transmission :", value: vehicle.transmission },
-                  { label: "Status", value: vehicle.status },
+                  { label: "Vehicle Type :", value: vehicle.vehicleData.VehicleType },
+                  { label: "Vehicle Number :", value: vehicle.vehicleData.licenceNumber },
+                  { label: "Company Name :", value: vehicle.vehicleData.comapnyName },
+                  { label: "Color :", value: vehicle.vehicleData.color },
+                  { label: "Fuel Type :", value: vehicle.vehicleData.fuelType },
+                  { label: "Transmission :", value: vehicle.vehicleData.transmission },
+                  { label: "Status", value: vehicle.vehicleData.status },
                   {
                     label: "Last Serviced :",
-                    value: new Date(vehicle.lastServiced).toLocaleDateString(),
+                    value: new Date(vehicle.vehicleData.lastServiced).toLocaleDateString(),
                   },
                   {
                     label: "Registration Date :",
                     value: new Date(
-                      vehicle.registrationDate
+                      vehicle.vehicleData.registrationDate
                     ).toLocaleDateString(),
                   },
                 ].map((item, index) => (
@@ -78,9 +78,9 @@ const VehiclePage = () => {
                 </h2>
                 <div className=" mt-3">
                   {[
-                    { label: "Owner Name :", value: vehicle.ownerName },
-                    { label: "Contact Number :", value: vehicle.ownerConntact },
-                    { label: "Owner address :", value: vehicle.ownerAddress },
+                    { label: "Owner Name :", value: vehicle.vehicleData.ownerName },
+                    { label: "Contact Number :", value: vehicle.vehicleData.ownerConntact },
+                    { label: "Owner address :", value: vehicle.vehicleData.ownerAddress },
                   ].map((item, index) => (
                     <div
                       key={index}
@@ -96,50 +96,44 @@ const VehiclePage = () => {
               </div>
 
               <div className="bg-gray-50 shadow-md rounded-2xl w-2/6 p-8 text-base mt-5">
-                <h2 className=" text-xl  font-semibold border-b-2 pb-2">
-                  Insurance Details
-                </h2>
-                <div className=" mt-3">
-                  {[
-                    {
-                      label: "Insurance Provider :",
-                      value: vehicle.insuranceDetails.provider,
-                    },
-                    {
-                      label: "Policy Number :",
-                      value: vehicle.insuranceDetails.policyNumber,
-                    },
-                    {
-                      label: "Expiry Date :",
-                      value: new Date(
-                        vehicle.insuranceDetails.expiryDate
-                      ).toLocaleDateString(),
-                    },
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between border-b border-gray-200 py-2"
-                    >
-                      <h3 className="font-medium text-gray-600">
-                        {item.label}
-                      </h3>
-                      <p className="text-gray-800">{item.value}</p>
+                    <h2 className=" text-xl  font-semibold border-b-2 pb-2">
+                      Insurance Details
+                    </h2>
+                    <div className=" mt-3">
+                      {[
+                        {
+                          label: "Insurance Provider :",
+                          value: vehicle.vehicleData.insuranceDetails.provider || "Not Available",
+                        },
+                        {
+                          label: "Policy Number :",
+                          value: vehicle.vehicleData.insuranceDetails.policyNumber || "Not Available",
+                        },
+                        {
+                          label: "Expiry Date :",
+                          value: vehicle.vehicleData.insuranceDetails.expiryDate
+                            ? new Date(vehicle.vehicleData.insuranceDetails.expiryDate).toLocaleDateString()
+                            : "Not Available",
+                        },
+                      ].map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex justify-between border-b border-gray-200 py-2"
+                        >
+                          <h3 className="font-medium text-gray-600">{item.label}</h3>
+                          <p className="text-gray-800">{item.value}</p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
               </div>
 
-              {/* <div className=" bg-primary shadow-md rounded-2xl w-[15%] p-5 text-base mt-5">
-                <div className='flex text-xl  font-semibold border-b border-black pb-2 justify-between pr-2'>
-                <h2 className=' '> Fuel</h2>
-                <h2 className=' '> +</h2>
-                </div>
-            </div> */}
+
+
               <Link
                 to={`/maintenance/${id}`}
-                className="bg-primary shadow-md rounded-xl w-[15%] p-5 text-base mt-5 flex justify-between items-center"
+                className="bg-primary shadow-md rounded-full w-[15%] p-5 h-16 text-base mt-5 flex justify-between items-center"
               >
-                <h2 className="text-xl font-semibold">Fuel</h2>
+                <h2 className="text-xl font-semibold">Maintenance</h2>
                 <h2 className="text-xl font-semibold">+</h2>
               </Link>
             </div>
@@ -148,6 +142,46 @@ const VehiclePage = () => {
           <p>Loading vehicle details...</p>
         )}
       </div>
+
+
+        <div className=" flex justify-between ml-[7.5rem] gap-5 mb-10 ">
+
+        <div className="bg-gray-50 shadow-md rounded-2xl w-[36%] p-8 text-base mt-5">
+            <h2 className=" text-xl font-semibold border-b-2 pb-2">
+              Maintenance Details
+            </h2>
+            <div className="mt-3">
+              {vehicle?.MaintenenceData && vehicle.MaintenenceData.length > 0 ? (
+                vehicle.MaintenenceData.map((maintenance, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col border-b border-gray-200 py-2"
+                    >
+                    <div className="flex justify-between">
+                      <h3 className="font-medium text-gray-600">Date:</h3>
+                      <p className="text-gray-800">
+                        {new Date(maintenance.date).toLocaleDateString() || "Not Available"}
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <h3 className="font-medium text-gray-600">Cost:</h3>
+                      <p className="text-gray-800">
+                        {maintenance.cost || "Not Available"}
+                      </p>
+                    </div>
+                    <div className="flex justify-between pb-4">
+                      <h3 className="font-medium text-gray-600">Type:</h3>
+                      <p className="text-gray-800">{maintenance.type || "Not Available"}</p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-gray-800">No Maintenance Data Available</p>
+              )}
+            </div>
+          </div>
+          </div>
+
     </div>
   );
 };
