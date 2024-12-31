@@ -16,8 +16,11 @@ const maintenanceSchema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
-        enum: ['Repair', 'Service', 'Inspection', 'Other'] // You can customize the options as needed
-    }
+        enum: ['Repair', 'Service', 'Inspection', 'Other'] 
+    },
+    
+    
+
 }, {
     timestamps: true // Automatically adds createdAt and updatedAt fields
 });
