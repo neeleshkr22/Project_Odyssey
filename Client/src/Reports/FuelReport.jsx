@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/Sidebar';
 
 const FuelReport = () => {
   const [vehicle, setVehicle] = useState('');
@@ -23,12 +23,11 @@ const FuelReport = () => {
     fetchVehicles();
   }, []);
 
-  // Debounced function to handle input change
+  // Handle input change for vehicle ID
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setVehicle(inputValue);
 
-    // Filter vehicles based on input
     const filtered = vehiclesList.filter((vehicle) =>
       vehicle._id.toLowerCase().includes(inputValue.toLowerCase())
     );
@@ -58,136 +57,226 @@ const FuelReport = () => {
     setFilteredVehicles([]);
   };
 
+  // Function to handle print
+  const handlePrint = () => {
+    window.print(); // This triggers the browser's print dialog
+  };
+
   return (
     <div>
-        <Navbar></Navbar>
-        <Sidebar></Sidebar>
-    <div className="container mx-auto p-5 mt-16">
+      <Navbar />
+      <Sidebar />
+      <div className="container mx-auto p-5 mt-16">
         <div className='flex justify-between'>
-        <h1 className="text-4xl font-bold text-gray-800 mb-8 border-b-2 pb-2 w-[53vw]">Fuel Report</h1>
-      <form onSubmit={handleSubmit} className="flex justify-center mb-10">
-        <div className="relative w-80">
-          <input
-            type="text"
-            placeholder="Enter Vehicle ID"
-            className="input input-bordered w-full"
-            value={vehicle}
-            onChange={handleInputChange}
-          />
-
-      
-          {filteredVehicles.length > 0 && (
-            <ul className="absolute w-full bg-white shadow-lg border rounded-md mt-1 max-h-40 overflow-y-auto z-10">
-              {filteredVehicles.map((vehicleItem, index) => (
-                <li
-                  key={index}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-200"
-                  onClick={() => handleSuggestionClick(vehicleItem._id)}
-                >
-                  {vehicleItem._id}
-                </li>
-              ))}
-            </ul>
-          )}
+          <h1 className="text-4xl font-bold text-gray-800 mb-8 border-b-2 pb-2 w-[53vw]">Fuel Report</h1>
+          <form onSubmit={handleSubmit} className="flex justify-center mb-10">
+            <div className="relative w-80">
+              <input
+                type="text"
+                placeholder="Enter Vehicle ID"
+                className="input input-bordered w-full"
+                value={vehicle}
+                onChange={handleInputChange}
+              />
+              {filteredVehicles.length > 0 && (
+                <ul className="absolute w-full bg-white shadow-lg border rounded-md mt-1 max-h-40 overflow-y-auto z-10">
+                  {filteredVehicles.map((vehicleItem, index) => (
+                    <li
+                      key={index}
+                      className="px-4 py-2 cursor-pointer hover:bg-gray-200"
+                      onClick={() => handleSuggestionClick(vehicleItem._id)}
+                    >
+                      {vehicleItem._id}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <button type="submit" className="btn btn-primary ml-4">
+              {loading ? 'Loading...' : 'Submit'}
+            </button>
+          </form>
         </div>
-        <button type="submit" className="btn btn-primary ml-4">
-          {loading ? 'Loading...' : 'Submit'}
+
+        {/* Print Button */}
+        <button onClick={handlePrint} className="btn btn-secondary mb-10">
+          Print Report
         </button>
-      </form>
-        </div>
 
-      {/* Display vehicle and fuel data */}
-      <div>
-        {data.length > 0 ? (
-          <>
-            <div className="card shadow-lg mb-10">
-                  <div className="card-body">
-                    <h2 className="card-title border-b-2 pb-2">Vehicle Details</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2">
-                      <div className="flex justify-end">
-                        <p><strong>ID:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle._id}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <p><strong>Type:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle.VehicleType}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <p><strong>Company:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle.comapnyName}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <p><strong>Model:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle.modelNumber}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <p><strong>Color:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle.color}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <p><strong>Fuel Type:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle.fuelType}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <p><strong>Transmission:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle.transmission}</p>
-                      </div>
-                      <div className="flex justify-end">
-                        <p><strong>Last Serviced:</strong></p>
-                      </div>
-                      <div>
-                        <p>{data[0].vehicle.lastServiced}</p>
-                      </div>
+        {/* Vehicle and Fuel Report */}
+        <div>
+          {data.length > 0 ? (
+            <>
+                            <div className="card shadow-lg mb-10">
+                <div className="card-body card2">
+                  <h2 className="card-title border-b-2 pb-2">Vehicle Details</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className="flex justify-end">
+                      <p><strong>ID:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[0].vehicle._id}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p><strong>Type:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[ 0].vehicle.VehicleType}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p><strong>Company:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[0].vehicle.comapnyName}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p><strong>Model:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[0].vehicle.modelNumber}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p><strong>Color:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[0].vehicle.color}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p><strong>Fuel Type:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[0].vehicle.fuelType}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p><strong>Transmission:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[0].vehicle.transmission}</p>
+                    </div>
+                    <div className="flex justify-end">
+                      <p><strong>Last Serviced:</strong></p>
+                    </div>
+                    <div>
+                      <p>{data[0].vehicle.lastServiced}</p>
                     </div>
                   </div>
                 </div>
-
-            <div className="card shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title border-b-2 pb-2">Fuel Reports</h2>
-                <table className="table table-zebra w-full">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Cost</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.map((entry, index) => (
-                      <tr key={index}>
-                        <td>{entry.date}</td>
-                        <td>{entry.cost}</td>
-                        <td>{entry.amount}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
               </div>
-            </div>
-          </>
-        ) : (
-          <p className="text-center text-xl">No data yet</p>
-        )}
+
+              <div className="card shadow-xl">
+                <div className="card-body">
+                  <h2 className="card-title border-b-2 pb-2">Fuel Reports</h2>
+                  <table className="table table-zebra w-full">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Cost</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.map((entry, index) => (
+                        <tr key={index}>
+                          <td>{entry.date}</td>
+                          <td>{entry.cost}</td>
+                          <td>{entry.amount}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </>
+          ) : (
+            <p className="text-center text-xl">No data yet</p>
+          )}
+        </div>
       </div>
-    </div>
-    </div>
 
 
+      
+    <style>
+        {`@media print {
+              /* Hide elements that are not needed for print */
+              .navbar,
+              .sidebar,
+              .btn-secondary {
+                visibility: hidden;
+              }
+                .card2{
+                margin-top: -120px;
+                }
+                    
+              /* Make the container use the full width */
+              .container {
+                width: 100vw;
+                padding: 0;
+                margin: 0;
+              }
+                    
+              /* Ensure card takes full width and reduce internal padding */
+              .card {
+                width: 100vw;
+                margin: 0;
+                box-shadow: none;
+              }
+              /* Make the card title slightly smaller to fit the page */
+              .card-title {
+                font-size: 20px;
+                margin-bottom: 10px;
+              }
+                    
+              /* Ensure the grid layout is tight and covers the full width */
+              .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px; /* Reduced gap between items */
+              }
+                    
+              /* Remove flex-based justification and make content compact */
+              .flex {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px; /* Reduced spacing between text */
+              }
+                    
+              .flex p {
+                margin: 0; /* Remove extra margin */
+              }
+                    
+              /* Table styling to make it more compact */
+              table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
+              }
+                    
+              table th,
+              table td {
+                border: 1px solid #ddd;
+                padding: 4px 8px; /* Reduced padding */
+                text-align: left;
+              }
+                    
+              table th {
+                background-color: #f2f2f2;
+              }
+                    
+              /* Ensure all text elements have less margin and padding */
+              .card-body p {
+                margin: 0; /* Collapse paragraph spacing */
+                padding: 0;
+              }
+                    
+              /* Add some margin between sections for clarity */
+              .card-body div {
+                margin-bottom: 10px; /* Reduced margin between sections */
+              }
+            }
+
+`}
+      </style>
+    </div>
   );
 };
 
