@@ -61,7 +61,7 @@ const Sidebar = () => {
                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
                   <NavLink to="/duty-slip-printing" className='hover:bg-base-300 p-2 rounded-lg'>Duty Slip Printing</NavLink>
                   <NavLink to="/invoice-printing" className='hover:bg-base-300 p-2 rounded-lg'>Invoice Printing</NavLink>
-                  <NavLink to="/fuel-filling-report" className='hover:bg-base-300 p-2 rounded-lg'>Fuel Filling Report</NavLink>
+                  <NavLink to="/fuelReport" className='hover:bg-base-300 p-2 rounded-lg'>Fuel Filling Report</NavLink>
                   <NavLink to="/servicing-report" className='hover:bg-base-300 p-2 rounded-lg'>Servicing Report</NavLink>
                   <NavLink to="/daily-duty-chart" className='hover:bg-base-300 p-2 rounded-lg'>Daily Duty Chart</NavLink>
                   <NavLink to="/hire-car" className='hover:bg-base-300 p-2 rounded-lg'>Hire Car</NavLink>
