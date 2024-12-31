@@ -43,9 +43,19 @@ const TripDetails = () => {
       <Sidebar />
 
       <div className='flex justify-between ml-[5.5rem] mr-20 items-baseline mt-24'>
-        <h1 className='font-semibold text-2xl border-b-2 w-[80vw] pb-2'>
+        <h1 className='font-semibold text-2xl border-b-2 w-[58vw] pb-2'>
           Trip Details
         </h1>
+        {/* Search Bar */}
+        <div className=" w-40 ">
+          <input
+            type="text"
+            placeholder="Search by vehicle or party"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-60 p-2 border border-gray-300 rounded-full pl-5"
+          />
+        </div>
         <div>
           <NavLink to="/addtrip" className="btn btn-primary text-[15px] px-6 py-2">
             <i className="bi bi-plus-lg"></i> Add Trip
@@ -53,30 +63,31 @@ const TripDetails = () => {
         </div>
       </div>
 
-      {/* Search Bar */}
-      <div className="ml-[5.5rem] mt-6">
-        <input
-          type="text"
-          placeholder="Search by vehicle or party"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full md:w-1/3 p-2 border border-gray-300 rounded-md"
-        />
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 ml-[5.5rem] mr-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-10 ml-[5.5rem] mr-20">
         {loading ? (
           <div className="flex justify-center items-center h-full">
             <p>Loading...</p>
           </div>
         ) : filteredTrips.length > 0 ? (
           filteredTrips.map((trip) => (
-            <div key={trip._id} className='bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300'>
-              <p className='font-bold text-lg'>Vehicle: {trip.vehicle}</p>
-              <p className='font-semibold'>Party: {trip.party}</p>
-              <p className='text-sm text-gray-600'>Date: {new Date(trip.startDate).toLocaleDateString()} - {new Date(trip.endDate).toLocaleDateString()}</p>
+            <div key={trip._id} className='bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300 mb-2'>
+              {/* Vehicle */}
+              <div className="flex justify-between mb-2">
+                <p className='font-semibold'>Vehicle:</p>
+                <p>{trip.vehicle}</p>
+              </div>
+              {/* Party */}
+              <div className="flex justify-between mb-2">
+                <p className='font-semibold'>Party:</p>
+                <p>{trip.party}</p>
+              </div>
+              {/* Date Range */}
+              <div className="flex justify-between mb-2">
+                <p className='font-semibold'>Date:</p>
+                <p>{new Date(trip.startDate).toLocaleDateString()} - {new Date(trip.endDate).toLocaleDateString()}</p>
+              </div>
               <NavLink to={`/trip/${trip._id}`}>
-              <button className="mt-2 btn btn-primary">View</button>
+                <button className="mt-5 w-full btn btn-primary">View Details</button>
               </NavLink>
             </div>
           ))

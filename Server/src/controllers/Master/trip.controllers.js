@@ -72,6 +72,18 @@ const getTrips = async(req,res)=>{
     }
 };
 
+const fetchTrip = async(req,res)=>{
+    try {
+        const trip = await Trip.findById(req.params.id);
+        if(!trip){
+            res.status(404).json({
+                msg:"Can't found",
+            })
+        }
+        res.send(trip);
+    } catch (error) {
+        console.error("Server error occured", error);
+    }
+}
 
-
-export { TripForm, getTrips };
+export { TripForm, getTrips, fetchTrip };
