@@ -1,5 +1,6 @@
 import Vehicle from '../../models/Vehicle.Model.js';
 import Maintenance from '../../models/Maintainence.model.js';
+import Fuel from '../../models/Fuel.model.js';
 
 // Function to handle vehicle form submission
 const vehicleForm = async (req, res) => {
@@ -75,7 +76,8 @@ const vehiclesInfo = async (req, res) => {
     const { id } = req.params;
     const vehicleData = await Vehicle.findById(id);
     const MaintenenceData = await Maintenance.find({ vehicle: id });
-    res.json({ vehicleData, MaintenenceData });
+    const FuelData = await Fuel.find({ vehicle: id });
+    res.json({ vehicleData, MaintenenceData , FuelData });
 }
 
 

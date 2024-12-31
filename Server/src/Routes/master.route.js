@@ -8,6 +8,7 @@ import { vehiclesInfo } from "../controllers/Master/vehicle.controllers.js";
 import { driverInfo } from "../controllers/Master/driver.controllers.js";
 import Vehicle from "../models/Vehicle.Model.js";
 import { maintainForm } from "../controllers/Master/maintainence.controllers.js";
+import { fuelForm } from "../controllers/Master/Fuel.controllers.js";
 
 const MasterRouter = express.Router();
 
@@ -56,6 +57,9 @@ MasterRouter.get('/trips',async(req,res)=>{
 })
 MasterRouter.post('/maintenance/:id',async(req,res)=>{
     maintainForm(req,res);
+})
+MasterRouter.post('/fuel/:id',async(req,res)=>{
+    fuelForm(req,res);
 })
 
 

@@ -20,6 +20,7 @@ import VehiclePage from './Master/VehiclePage.jsx'
 import DriverPage from './Master/DriverPage.jsx'
 import PartyPage from './Master/PartyPage.jsx'
 import MaintenanceForm from './Master/MaintenanceForm.jsx'
+import FuelForm from './Master/FuelForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
   {
     path: '/maintenance/:id',
     element: <MaintenanceForm />
+  },
+  {
+    path: '/fuel/:id',
+    element: <FuelForm />
   },
 
 

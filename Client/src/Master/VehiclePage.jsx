@@ -128,15 +128,104 @@ const VehiclePage = () => {
               </div>
 
 
-
+              <div className="flex flex-col w-60 mt-10">
+              <h2 className=" text-xl font-semibold border-b-2 pb-2">
+                Add Data
+              </h2>
               <Link
                 to={`/maintenance/${id}`}
-                className="bg-primary shadow-md rounded-full w-[15%] p-5 h-16 text-base mt-5 flex justify-between items-center"
+                className="bg-primary shadow-md rounded-full w-full p-5 h-16 text-base mt-5 flex justify-between items-center"
               >
                 <h2 className="text-xl font-semibold">Maintenance</h2>
                 <h2 className="text-xl font-semibold">+</h2>
               </Link>
+              <Link
+                to={`/fuel/${id}`}
+                className="bg-primary shadow-md rounded-full w-full p-5 h-16 text-base mt-5 flex justify-between items-center"
+              >
+                <h2 className="text-xl font-semibold">Fuel</h2>
+                <h2 className="text-xl font-semibold">+</h2>
+              </Link>
+              </div>
+
+
+              
             </div>
+
+            <div className=" flex justify-centre gap-5 ml-[7.5rem] mb-10 ">
+
+                <div className="bg-gray-50 shadow-md rounded-2xl w-[36%] p-8 text-base mt-5">
+                    <h2 className=" text-xl font-semibold border-b-2 pb-2">
+                      Maintenance Details
+                    </h2>
+                    <div className="mt-3">
+                      {vehicle?.MaintenenceData && vehicle.MaintenenceData.length > 0 ? (
+                        vehicle.MaintenenceData.map((maintenance, index) => (
+                          <div
+                            key={index}
+                            className="flex flex-col border-b border-gray-200 py-2"
+                            >
+                            <div className="flex justify-between">
+                              <h3 className="font-medium text-gray-600">Date:</h3>
+                              <p className="text-gray-800">
+                                {new Date(maintenance.date).toLocaleDateString() || "Not Available"}
+                              </p>
+                            </div>
+                            <div className="flex justify-between">
+                              <h3 className="font-medium text-gray-600">Cost:</h3>
+                              <p className="text-gray-800">
+                                {maintenance.cost || "Not Available"}
+                              </p>
+                            </div>
+                            <div className="flex justify-between pb-4">
+                              <h3 className="font-medium text-gray-600">Type:</h3>
+                              <p className="text-gray-800">{maintenance.type || "Not Available"}</p>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="text-gray-800">No Maintenance Data Available</p>
+                      )}
+                    </div>
+                  </div>
+                    
+                    
+                <div className="bg-gray-50 shadow-md rounded-2xl w-[55%] p-8 text-base mt-5">
+                    <h2 className=" text-xl font-semibold border-b-2 pb-2">
+                      Fuel Details
+                    </h2>
+                    <div className="mt-3">
+                      {vehicle?.FuelData && vehicle.FuelData.length > 0 ? (
+                        vehicle.FuelData.map((fuel, index) => (
+                          <div
+                            key={index}
+                            className="flex flex-col border-b border-gray-200 py-2"
+                            >
+                            <div className="flex justify-between">
+                              <h3 className="font-medium text-gray-600">Date:</h3>
+                              <p className="text-gray-800">
+                                {new Date(fuel.date).toLocaleDateString() || "Not Available"}
+                              </p>
+                            </div>
+                            <div className="flex justify-between">
+                              <h3 className="font-medium text-gray-600">Cost:</h3>
+                              <p className="text-gray-800">
+                                {fuel.cost || "Not Available"}
+                              </p>
+                            </div>
+                            <div className="flex justify-between pb-4">
+                              <h3 className="font-medium text-gray-600">Amount:</h3>
+                              <p className="text-gray-800">{fuel.amount || "Not Available"}</p>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="text-gray-800">No Fuel Data Available</p>
+                      )}
+                    </div>
+                  </div>
+                    
+                  </div>
           </div>
         ) : (
           <p>Loading vehicle details...</p>
@@ -144,43 +233,7 @@ const VehiclePage = () => {
       </div>
 
 
-        <div className=" flex justify-between ml-[7.5rem] gap-5 mb-10 ">
 
-        <div className="bg-gray-50 shadow-md rounded-2xl w-[36%] p-8 text-base mt-5">
-            <h2 className=" text-xl font-semibold border-b-2 pb-2">
-              Maintenance Details
-            </h2>
-            <div className="mt-3">
-              {vehicle?.MaintenenceData && vehicle.MaintenenceData.length > 0 ? (
-                vehicle.MaintenenceData.map((maintenance, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col border-b border-gray-200 py-2"
-                    >
-                    <div className="flex justify-between">
-                      <h3 className="font-medium text-gray-600">Date:</h3>
-                      <p className="text-gray-800">
-                        {new Date(maintenance.date).toLocaleDateString() || "Not Available"}
-                      </p>
-                    </div>
-                    <div className="flex justify-between">
-                      <h3 className="font-medium text-gray-600">Cost:</h3>
-                      <p className="text-gray-800">
-                        {maintenance.cost || "Not Available"}
-                      </p>
-                    </div>
-                    <div className="flex justify-between pb-4">
-                      <h3 className="font-medium text-gray-600">Type:</h3>
-                      <p className="text-gray-800">{maintenance.type || "Not Available"}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p className="text-gray-800">No Maintenance Data Available</p>
-              )}
-            </div>
-          </div>
-          </div>
 
     </div>
   );
