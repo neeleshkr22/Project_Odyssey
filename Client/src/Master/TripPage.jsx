@@ -9,16 +9,12 @@ const TripPage = () => {
   const navigate = useNavigate();
   const [trip, setTrip] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);  // State to track if we're editing
-  const [newPaymentStatus, setNewPaymentStatus] = useState('');
-  const [statusUpdateSuccess, setStatusUpdateSuccess] = useState(false);
 
   useEffect(() => {
     const fetchTrip = async () => {
       try {
         const response = await axios.get(`http://localhost:3001/trips/${id}`);
         setTrip(response.data);
-        setNewPaymentStatus(response.data.fareDetails.paymentStatus); // Set the current payment status
         console.log('Trip:', response.data);
       } catch (error) {
         console.error("Error fetching trip details", error);
@@ -28,25 +24,6 @@ const TripPage = () => {
     };
     fetchTrip();
   }, [id]);
-
-  const handlePaymentStatusChange = async (event) => {
-    const updatedStatus = event.target.value;
-    setNewPaymentStatus(updatedStatus);
-
-    try {
-      await axios.put(`http://localhost:3001/trips/${id}`, {
-        fareDetails: { paymentStatus: updatedStatus },
-      });
-      setStatusUpdateSuccess(true); // Success feedback
-      setTimeout(() => setStatusUpdateSuccess(false), 3000); // Hide success feedback after 3 seconds
-    } catch (error) {
-      console.error("Error updating payment status", error);
-    }
-  };
-
-  const toggleEdit = () => {
-    setIsEditing(!isEditing);  // Toggle the edit mode
-  };
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -68,7 +45,7 @@ const TripPage = () => {
       <div className="mt-10 ml-[5.5rem] mr-20 bg-white shadow-lg rounded-lg p-6">
         {loading ? (
           <div className="flex justify-center items-center h-full">
-            <p>Loading...</p>
+            <p>Loading...</p> {/* Replace with spinner or skeleton loader */}
           </div>
         ) : trip ? (
           <div>
@@ -84,7 +61,7 @@ const TripPage = () => {
               </div>
               <div className="flex justify-between">
                 <p className="font-semibold">Driver:</p>
-                <p>{trip.driver}</p>
+                <p>{trip.driver}</p> {/* Replace with driver's name if available */}
               </div>
               <div className="flex justify-between">
                 <p className="font-semibold">Start Date:</p>
@@ -118,43 +95,14 @@ const TripPage = () => {
                 <p className="font-semibold">Trip Status:</p>
                 <p>{trip.tripStatus}</p>
               </div>
-
-              {/* Payment Status Section */}
               <div className="flex justify-between">
                 <p className="font-semibold">Payment Status:</p>
-                <div>
-                  {!isEditing ? (
-                    <p>{trip.fareDetails.paymentStatus}</p> // Show current payment status
-                  ) : (
-                    <select
-                      value={newPaymentStatus}
-                      onChange={handlePaymentStatusChange}
-                      className="p-2 border border-gray-300 rounded"
-                    >
-                      <option value="Pending">Pending</option>
-                      <option value="Completed">Completed</option>
-                      <option value="Failed">Failed</option>
-                    </select>
-                  )}
-                </div>
-                <button
-                  onClick={toggleEdit}
-                  className="ml-4 text-blue-500"
-                >
-                  {isEditing ? 'Save' : 'Edit'}
-                </button>
+                <p>{trip.fareDetails.paymentStatus}</p>
               </div>
-
               <div className="flex justify-between">
                 <p className="font-semibold">Created At:</p>
                 <p>{new Date(trip.createdAt).toLocaleString()}</p>
               </div>
-
-              {statusUpdateSuccess && (
-                <div className="mt-4 text-green-500 font-semibold">
-                  Payment status updated successfully!
-                </div>
-              )}
             </div>
           </div>
         ) : (
