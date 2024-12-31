@@ -2,12 +2,13 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import car from "../../assets/car.png";
 
 const VehiclePage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [vehicle, setVehicle] = useState(null);
 
@@ -32,10 +33,18 @@ const VehiclePage = () => {
       <Sidebar></Sidebar>
 
       <div>
-        <h1>Vehicle Details</h1>
+        <div className=" flex justify-between ml-[7.5rem] mr-20 items-baseline mt-24">
+        <h1 className=" font-semibold text-xl ">Vehicle Details</h1>
+        <button
+          onClick={() => navigate(-1)}
+          className="btn btn-primary text-[15px] px-6 py-2"
+        >
+          <i className="bi bi-arrow-left"></i> Back
+        </button>
+        </div>
         {vehicle ? (
           <div>
-            <div className=" flex justify-center gap-5 mt-20">
+            <div className=" flex justify-center gap-5 mt-2">
               <div className="bg-gray-50 shadow-md rounded-2xl w-3/6 p-5 text-base">
                 {[
                   { label: "Vehicle Type :", value: vehicle.vehicleData.VehicleType },
@@ -71,7 +80,7 @@ const VehiclePage = () => {
               </div>
             </div>
 
-            <div className="2 flex justify-center gap-5 mt-6">
+            <div className="2 flex justify-center gap-5 mt-3">
               <div className="bg-gray-50 shadow-md rounded-2xl w-2/6 p-8 text-base mt-5">
                 <h2 className=" text-xl  font-semibold border-b-2 pb-2">
                   Owner Details

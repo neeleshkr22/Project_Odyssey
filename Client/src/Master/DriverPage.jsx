@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const DriverPage = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [driver, setDriver] = useState(null);
     const [loading, setLoading] = useState(true); // For loading state
 
@@ -35,6 +36,12 @@ const DriverPage = () => {
         <div className="bg-gray-50 min-h-screen">
             <Navbar />
             <Sidebar />
+            <button
+          onClick={() => navigate(-1)}
+          className="btn btn-primary text-[15px] px-6 py-2 absolute right-20 top-20"
+        >
+          <i className="bi bi-arrow-left"></i> Back
+        </button>
 
             <div className="p-5">
                 {driver ? (

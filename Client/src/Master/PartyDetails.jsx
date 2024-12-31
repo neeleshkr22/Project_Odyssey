@@ -36,7 +36,7 @@ function PartyDetails() {
       <Sidebar />
 
       <div className="flex justify-between ml-[5.5rem] mr-20 items-baseline mt-24">
-        <h1 className="font-semibold text-xl border-b-2 w-[80vw] pb-2">
+        <h1 className="font-semibold text-xl border-b-2 w-[58vw] pb-2">
           Party Details
         </h1>
 

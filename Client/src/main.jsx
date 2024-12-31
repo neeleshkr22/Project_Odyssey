@@ -21,6 +21,7 @@ import DriverPage from './Master/DriverPage.jsx'
 import PartyPage from './Master/PartyPage.jsx'
 import MaintenanceForm from './Master/MaintenanceForm.jsx'
 import FuelForm from './Master/FuelForm.jsx'
+import TripPage from './Master/TripPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
     path: '/fuel/:id',
     element: <FuelForm />
   },
+  {
+    path : '/trip/:id',
+    element : <TripPage />
+  }
 
 
 ])

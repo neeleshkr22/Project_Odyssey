@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const PartyPage = () => {
   const { id } = useParams();
   const [party, setParty] = useState(null);
-  const [isPaymentHistoryOpen, setPaymentHistoryOpen] = useState(false); // State to toggle payment history dropdown
-  const [isRentalHistoryOpen, setRentalHistoryOpen] = useState(false); // State to toggle rental history dropdown
-  const [selectedPayment, setSelectedPayment] = useState(null); // State to track selected payment for fare details
+  const navigate = useNavigate();
+  const [isPaymentHistoryOpen, setPaymentHistoryOpen] = useState(false); 
+  const [isRentalHistoryOpen, setRentalHistoryOpen] = useState(false); 
+  const [selectedPayment, setSelectedPayment] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +41,12 @@ const PartyPage = () => {
     <div>
       <Navbar />
       <Sidebar />
+      <button
+          onClick={() => navigate(-1)}
+          className="btn btn-primary text-[15px] px-6 py-2 absolute right-20 top-20"
+        >
+          <i className="bi bi-arrow-left"></i> Back
+        </button>
 
       <div className="flex justify-center gap-5 mt-20">
         <div className="content bg-gray-50 shadow-md rounded-2xl w-[70%] p-5 text-base">

@@ -72,4 +72,6 @@ const getTrips = async(req,res)=>{
     }
 };
 
+
+
 export { TripForm, getTrips };
