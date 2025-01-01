@@ -1,6 +1,6 @@
 import express from "express";
 import { vehicleForm } from "../controllers/Master/vehicle.controllers.js";
-import { TripForm, getTrips, fetchTrip } from "../controllers/Master/trip.controllers.js";
+import { TripForm, getTrips, fetchTrip, tripPaymentStatus } from "../controllers/Master/trip.controllers.js";
 import { parties, partyForm, partyInfo } from "../controllers/Master/party.controllers.js";
 import drivers, { driverForm } from "../controllers/Master/driver.controllers.js";
 import { vehicles } from "../controllers/Master/vehicle.controllers.js";
@@ -9,6 +9,7 @@ import { driverInfo } from "../controllers/Master/driver.controllers.js";
 import Vehicle from "../models/Vehicle.Model.js";
 import { maintainForm } from "../controllers/Master/maintainence.controllers.js";
 import { fuelForm } from "../controllers/Master/Fuel.controllers.js";
+import Trip from "../models/Trip.model.js";
 
 const MasterRouter = express.Router();
 
@@ -64,6 +65,10 @@ MasterRouter.post('/fuel/:id',async(req,res)=>{
 MasterRouter.get("/trips/:id",async(req,res)=>{
     fetchTrip(req,res);
 })
+
+MasterRouter.put('/trips/:id/payment-status', async (req, res) => {
+    tripPaymentStatus(req, res);
+  });
 
 
 

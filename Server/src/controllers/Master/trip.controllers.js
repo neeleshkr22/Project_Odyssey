@@ -74,7 +74,7 @@ const getTrips = async(req,res)=>{
 
 const fetchTrip = async(req,res)=>{
     try {
-        const trip = await Trip.findById(req.params.id);
+        const trip = await Trip.findById(req.params.id).populate('driver');
         if(!trip){
             res.status(404).json({
                 msg:"Can't found",
@@ -84,6 +84,28 @@ const fetchTrip = async(req,res)=>{
     } catch (error) {
         console.error("Server error occured", error);
     }
+}
+
+export const tripPaymentStatus = async (req, res) => {
+        try {
+          const { paymentStatus , tripStatus } = req.body; 
+          const tripId = req.params.id;
+      
+          const updatedTrip = await Trip.findByIdAndUpdate(
+            tripId,
+            { 'fareDetails.paymentStatus': paymentStatus , 'tripStatus' : tripStatus },
+            { new: true } 
+          );
+      
+          if (!updatedTrip) {
+            return res.status(404).json({ message: 'Trip not found' });
+          }
+      
+          res.status(200).json(updatedTrip);
+        } catch (error) {
+          console.error('Error updating payment status:', error);
+          res.status(500).json({ message: 'Failed to update payment status' });
+        }
 }
 
 export { TripForm, getTrips, fetchTrip };

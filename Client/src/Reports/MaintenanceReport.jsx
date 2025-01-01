@@ -3,7 +3,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 
-const FuelReport = () => {
+const MaintenanceReport = () => {
   const [vehicle, setVehicle] = useState('');
   const [data, setData] = useState([]);
   const [vehiclesList, setVehiclesList] = useState([]);
@@ -39,7 +39,7 @@ const FuelReport = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:3001/fuelReport', {
+      const response = await axios.get('http://localhost:3001/maintainReport', {
         params: { vehicle }
       });
       setData(response.data);
@@ -64,7 +64,7 @@ const FuelReport = () => {
   };
 
   // Calculate total fuel cost
-  const totalFuelCost = data.reduce((total, entry) => total + parseFloat(entry.cost || 0), 0).toFixed(2);
+  const totalMaintainCost = data.reduce((total, entry) => total + parseFloat(entry.cost || 0), 0).toFixed(2);
 
   return (
     <div>
@@ -72,7 +72,7 @@ const FuelReport = () => {
       <Sidebar />
       <div className="container mx-auto p-5 mt-16">
         <div className="flex justify-between">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8 border-b-2 pb-2 w-[53vw]">Fuel Report</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-8 border-b-2 pb-2 w-[53vw]">Maintenance Report</h1>
           <form onSubmit={handleSubmit} className="flex justify-center mb-10">
             <div className="relative w-80">
               <input
@@ -171,13 +171,13 @@ const FuelReport = () => {
 
               <div className="card card2 shadow-xl">
                 <div className="card-body">
-                  <h2 className="card-title border-b-2 pb-2">Fuel Reports</h2>
+                  <h2 className="card-title border-b-2 pb-2">Maintenance Reports</h2>
                   <table className="table table-zebra w-full">
                     <thead>
                       <tr>
                         <th>Date</th>
                         <th>Cost</th>
-                        <th>Amount</th>
+                        <th>Type</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -185,13 +185,16 @@ const FuelReport = () => {
                         <tr key={index}>
                           <td>{new Date(entry.date).toLocaleDateString()}</td>
                           <td>₹{entry.cost}</td>
-                          <td>{entry.amount}</td>
+                          <td>{entry.type}</td>
                         </tr>
                       ))}
                     </tbody>
-                    <div className="mt-5 ml-2">
-                      <p className="">Total Fuel Cost:  <span className=' ml-2  font-medium'>₹{totalFuelCost}</span></p>
-                    </div>
+                      
+                      {/* Total Fuel Cost */}
+                      <div className=' ml-4 mt-2'>
+                        <p>Total Maintenance Cost : <span className=' font-medium ml-2'>₹{totalMaintainCost}</span> </p>
+                      </div>
+
                   </table>
                 </div>
               </div>
@@ -282,19 +285,16 @@ const FuelReport = () => {
           .card2{
                   width: 125vw;
           }
-          .text{
-          visibility: hidden;
-          }
+
 
           /* Ensure no content overflows */
           * {
             overflow: visible;
           }
-
         }`}
       </style>
     </div>
   );
 };
 
-export default FuelReport;
+export default MaintenanceReport;
