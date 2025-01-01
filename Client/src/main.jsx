@@ -24,6 +24,8 @@ import FuelForm from './Master/FuelForm.jsx'
 import TripPage from './Master/TripPage.jsx'
 import FuelReport from './Reports/FuelReport.jsx'
 import MaintenanceReport from './Reports/MaintenanceReport.jsx'
+import DutySlip from './Reports/DutySlip.jsx'
+import DutySlipPrint from './Reports/DetySlipPrint.jsx'
 
 const router = createBrowserRouter([
   {
@@ -114,6 +116,18 @@ const router = createBrowserRouter([
   {
     path : '/maintenanceReport',
     element : <MaintenanceReport />
+  },
+  {
+    path : '/dutySlip/:id',
+    element : <DutySlip />
+  },
+  {
+    path : '/bookingReport',
+    element : <TripDetails />
+  },
+  {
+    path : 'duty-slip-printing',
+    element : <DutySlipPrint />
   }
 
 

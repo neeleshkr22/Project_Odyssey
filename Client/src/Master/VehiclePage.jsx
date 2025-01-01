@@ -155,6 +155,13 @@ const VehiclePage = () => {
                 <h2 className="text-xl font-semibold">Fuel</h2>
                 <h2 className="text-xl font-semibold">+</h2>
               </Link>
+              <Link
+                to={`/dutySlip/${id}`}
+                className="bg-primary shadow-md rounded-full w-full p-5 h-16 text-base mt-5 flex justify-between items-center"
+              >
+                <h2 className="text-xl font-semibold">Duty</h2>
+                <h2 className="text-xl font-semibold">+</h2>
+              </Link>
               </div>
 
 

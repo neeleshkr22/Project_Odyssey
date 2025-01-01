@@ -29,7 +29,8 @@ const TripDetails = () => {
     if (searchQuery) {
       const filtered = trips.filter(trip => 
         trip.vehicle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        trip.party.toLowerCase().includes(searchQuery.toLowerCase())
+        trip.party.toLowerCase().includes(searchQuery.toLowerCase())  ||
+        trip._id.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setFilteredTrips(filtered);
     } else {
@@ -43,17 +44,17 @@ const TripDetails = () => {
       <Sidebar />
 
       <div className='flex justify-between ml-[5.5rem] mr-20 items-baseline mt-24'>
-        <h1 className='font-semibold text-2xl border-b-2 w-[58vw] pb-2'>
+        <h1 className='font-semibold text-2xl border-b-2 w-[55vw] pb-2'>
           Trip Details
         </h1>
         {/* Search Bar */}
         <div className=" w-40 ">
           <input
             type="text"
-            placeholder="Search by vehicle or party"
+            placeholder="Search by trip id , vehicle or party"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-60 p-2 border border-gray-300 rounded-full pl-5"
+            className="w-72  p-2 border border-gray-300 rounded-full pl-5"
           />
         </div>
         <div>
@@ -71,6 +72,10 @@ const TripDetails = () => {
         ) : filteredTrips.length > 0 ? (
           filteredTrips.map((trip) => (
             <div key={trip._id} className='bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300 mb-2'>
+              <div className="flex justify-between mb-2">
+                <p className='font-semibold'>Trip:</p>
+                <p>{trip._id}</p>
+              </div>
               {/* Vehicle */}
               <div className="flex justify-between mb-2">
                 <p className='font-semibold'>Vehicle:</p>
