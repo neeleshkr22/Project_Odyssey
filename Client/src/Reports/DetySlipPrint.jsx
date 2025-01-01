@@ -110,7 +110,7 @@ const DutySlipPrint = () => {
 
         {/* Duty Slip Table */}
         {data.length > 0 ? 
-        <div className="overflow-x-auto">
+        <div className="slip overflow-x-auto">
         <table className="table-auto w-full text-sm text-left">
           <thead>
             <tr className="border-b">
@@ -150,7 +150,7 @@ const DutySlipPrint = () => {
             visibility: hidden;
           }
           .container {
-            width: 100vw;
+            width: 200vw;
             padding: 0;
             margin: 0;
           }
@@ -167,13 +167,16 @@ const DutySlipPrint = () => {
             border: 1px solid #ccc;
             padding: 4px;
           }
-          .card2 {
-            margin-top: -120px;
-          }
           body {
             transform: scale(0.8);
             transform-origin: top left;
           }
+            .slip{
+            position : absolute;
+            top : 100px;
+            z-index : 100;
+            width: 120vw;
+            }
         }`}
       </style>
     </div>

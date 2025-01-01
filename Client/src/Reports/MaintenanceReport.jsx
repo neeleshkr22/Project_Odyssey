@@ -291,6 +291,9 @@ const MaintenanceReport = () => {
           * {
             overflow: visible;
           }
+            body{
+            margin-top : -100px;
+            }
         }`}
       </style>
     </div>
