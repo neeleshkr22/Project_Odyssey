@@ -108,7 +108,7 @@ const FuelReport = () => {
           {data.length > 0 ? (
             <>
               <div className="card shadow-lg mb-10">
-                <div className="card-body card2">
+                <div className="card-body ">
                   <h2 className="card-title border-b-2 pb-2">Vehicle Details</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     <div className="flex justify-end">
@@ -163,7 +163,7 @@ const FuelReport = () => {
                 </div>
               </div>
 
-              <div className="card shadow-xl">
+              <div className="card card2 shadow-xl">
                 <div className="card-body">
                   <h2 className="card-title border-b-2 pb-2">Fuel Reports</h2>
                   <table className="table table-zebra w-full">
@@ -210,37 +210,74 @@ const FuelReport = () => {
             box-shadow: none;
           }
           table {
-            width: 100%;
-            border-collapse: collapse;
+                    width: 100%;
+                    border-collapse: collapse;
+                  }
+                  th, td {
+                    border: 1px solid #ccc;
+                    padding: 4px;
+                  }
+                      .card2 {
+            margin-top: -120px;
           }
-          th, td {
-            border: 1px solid #ccc;
-            padding: 4px;
+                
+          .container {
+            width: 100vw;
+            padding: 0;
+            margin: 0;
           }
-              .card2 {
-    margin-top: -120px;
-  }
-
-  .container {
-    width: 100vw;
-    padding: 0;
-    margin: 0;
-  }
-
-  .card {
-    width: 100vw;
-    margin: 0;
-    box-shadow: none;
-  }
-
-  .grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .flex {
-    margin-bottom: 5px;
-  }
+                
+          .card {
+            width: 100vw;
+            margin: 0;
+            box-shadow: none;
+          }
+                
+          .grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+          }
+                
+          .flex {
+            margin-bottom: 5px;
+          }
+             body {
+            transform: scale(0.8); /* 60% scaling */
+            transform-origin: top left;
+          }
+                
+          /* Ensure the layout fits within the printable area */
+          .container {
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+          }
+                
+          .card {
+            width: 200vw;
+            margin: 0;
+            box-shadow: none;
+          }
+                
+          .grid {
+            grid-template-columns: 1fr 1fr; /* Adjust the grid layout for printing */
+            gap: 10px;
+          }
+                
+          .flex {
+            margin-bottom: 5px;
+          }
+                
+          .card2{
+                  width: 125vw;
+          }
+                
+                
+                
+          /* Ensure no content overflows */
+          * {
+            overflow: visible;
+          }
         }`}
       </style>
     </div>
