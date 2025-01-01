@@ -67,7 +67,7 @@ const FuelReport = () => {
       <Navbar />
       <Sidebar />
       <div className="container mx-auto p-5 mt-16">
-        <div className='flex justify-between'>
+        <div className="flex justify-between">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 border-b-2 pb-2 w-[53vw]">Fuel Report</h1>
           <form onSubmit={handleSubmit} className="flex justify-center mb-10">
             <div className="relative w-80">
@@ -107,7 +107,7 @@ const FuelReport = () => {
         <div>
           {data.length > 0 ? (
             <>
-                            <div className="card shadow-lg mb-10">
+              <div className="card shadow-lg mb-10">
                 <div className="card-body card2">
                   <h2 className="card-title border-b-2 pb-2">Vehicle Details</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2">
@@ -121,7 +121,7 @@ const FuelReport = () => {
                       <p><strong>Type:</strong></p>
                     </div>
                     <div>
-                      <p>{data[ 0].vehicle.VehicleType}</p>
+                      <p>{data[0].vehicle.VehicleType}</p>
                     </div>
                     <div className="flex justify-end">
                       <p><strong>Company:</strong></p>
@@ -193,88 +193,55 @@ const FuelReport = () => {
         </div>
       </div>
 
-
-      
-    <style>
+      <style>
         {`@media print {
-              /* Hide elements that are not needed for print */
-              .navbar,
-              .sidebar,
-              .btn-secondary {
-                visibility: hidden;
-              }
-                .card2{
-                margin-top: -120px;
-                }
-                    
-              /* Make the container use the full width */
-              .container {
-                width: 100vw;
-                padding: 0;
-                margin: 0;
-              }
-                    
-              /* Ensure card takes full width and reduce internal padding */
-              .card {
-                width: 100vw;
-                margin: 0;
-                box-shadow: none;
-              }
-              /* Make the card title slightly smaller to fit the page */
-              .card-title {
-                font-size: 20px;
-                margin-bottom: 10px;
-              }
-                    
-              /* Ensure the grid layout is tight and covers the full width */
-              .grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px; /* Reduced gap between items */
-              }
-                    
-              /* Remove flex-based justification and make content compact */
-              .flex {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 5px; /* Reduced spacing between text */
-              }
-                    
-              .flex p {
-                margin: 0; /* Remove extra margin */
-              }
-                    
-              /* Table styling to make it more compact */
-              table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 10px;
-              }
-                    
-              table th,
-              table td {
-                border: 1px solid #ddd;
-                padding: 4px 8px; /* Reduced padding */
-                text-align: left;
-              }
-                    
-              table th {
-                background-color: #f2f2f2;
-              }
-                    
-              /* Ensure all text elements have less margin and padding */
-              .card-body p {
-                margin: 0; /* Collapse paragraph spacing */
-                padding: 0;
-              }
-                    
-              /* Add some margin between sections for clarity */
-              .card-body div {
-                margin-bottom: 10px; /* Reduced margin between sections */
-              }
-            }
 
-`}
+          .navbar, .sidebar, .btn-secondary {
+            visibility: hidden;
+          }
+          .container {
+            width: 100vw;
+            padding: 0;
+            margin: 0;
+          }
+          .card {
+            width: 100%;
+            margin: 0;
+            box-shadow: none;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          th, td {
+            border: 1px solid #ccc;
+            padding: 4px;
+          }
+              .card2 {
+    margin-top: -120px;
+  }
+
+  .container {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
+
+  .card {
+    width: 100vw;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .flex {
+    margin-bottom: 5px;
+  }
+        }`}
       </style>
     </div>
   );
