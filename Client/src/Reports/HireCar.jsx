@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 const HireCar = () => {
   const [carDetails, setCarDetails] = useState({
@@ -51,7 +53,8 @@ const HireCar = () => {
       const response = await axios.post("http://localhost:3001/addCar", carDetails);
       console.log(response);  // Log the response from the server
       if (response.status === 200) {
-        console.log("Car added successfully");
+        alert("Car added successfully.");
+        navigate("/HireCar");
       } else {
         console.error("Failed to add car.");
       }
@@ -61,7 +64,10 @@ const HireCar = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div>
+      <Navbar></Navbar>
+      <Sidebar></Sidebar>
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
         <h1 className="text-2xl font-semibold mb-6 text-center">Add Car</h1>
         <form onSubmit={handleSubmit}>
@@ -124,6 +130,7 @@ const HireCar = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };
