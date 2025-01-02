@@ -84,7 +84,7 @@ const Dashboard = () => {
       <div className=" w-[89vw] ml-20 mt-6">
         <div className="flex justify-between space-x-5"> 
 
-        <div className="border-2 h-[50vh] w-full bg-zinc-100 rounded-3xl">
+        <div className=" h-[50vh] w-full shadow-lg rounded-3xl">
 
           <div>
           <h2>Drivers List</h2>
@@ -111,8 +111,7 @@ const Dashboard = () => {
       />
 
         </div>
-        {/* <div className="artboard phone-1 bg-red-400">320×568</div>
-        <div className="artboard phone-1 bg-red-400">320×568</div> */}
+
         </div>
       
       <div className="flex justify-between text-neutral ">
