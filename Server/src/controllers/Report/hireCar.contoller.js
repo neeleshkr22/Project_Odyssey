@@ -41,3 +41,19 @@ export const addCar = async (req, res) => {
     }
   };
   
+
+  export const getCar = async (req, res) => {
+    try {
+      const cars = await HireCar.find();
+      res.status(200).json({
+        msg: true,
+        data: cars,
+      });
+    } catch (error) {
+      console.error("error", error);
+      res.status(500).json({
+        msg: false,
+        error: "An error occurred while fetching the cars",
+      });
+    }
+  };

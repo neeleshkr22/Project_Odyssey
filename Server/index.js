@@ -13,7 +13,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173', // Same as above
   'https://d717-103-80-22-106.ngrok-free.app',
-  'https://dedc30e4e9ae3797e67c9877a7f13d23.serveo.net'
+  'https://64e315d5669ae85c8dac95b816d2ac81.serveo.net'
 ];
 
 
