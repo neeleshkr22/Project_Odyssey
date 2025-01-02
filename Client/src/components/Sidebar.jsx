@@ -64,9 +64,9 @@ const Sidebar = () => {
                   <NavLink to="/fuelReport" className='hover:bg-base-300 p-2 rounded-lg'>Fuel Filling Report</NavLink>
                   <NavLink to="/maintenanceReport" className='hover:bg-base-300 p-2 rounded-lg'>Maintenance Report</NavLink>
                   <NavLink to="/bookingReport" className='hover:bg-base-300 p-2 rounded-lg'>Booking Report</NavLink>
-                  <NavLink to="/hire-car" className='hover:bg-base-300 p-2 rounded-lg'>Hire Car</NavLink>
+                  <NavLink to="/HireCar" className='hover:bg-base-300 p-2 rounded-lg'>Hire Car</NavLink>
                   <NavLink to="/business-report" className='hover:bg-base-300 p-2 rounded-lg'>Business Report</NavLink>
-                  <NavLink to="/pending-bill-report" className='hover:bg-base-300 p-2 rounded-lg'>Pending Bill Report</NavLink>
+                  <NavLink to="/PendingBillReport" className='hover:bg-base-300 p-2 rounded-lg'>Pending Bill Report</NavLink>
                   <NavLink to="/hired-vehicle-report" className='hover:bg-base-300 p-2 rounded-lg'>Hired Vehicle Report</NavLink>
                 </ul>
               )}

@@ -26,6 +26,9 @@ import FuelReport from './Reports/FuelReport.jsx'
 import MaintenanceReport from './Reports/MaintenanceReport.jsx'
 import DutySlip from './Reports/DutySlip.jsx'
 import DutySlipPrint from './Reports/DetySlipPrint.jsx'
+import PendingBillReport from './Reports/PendingBillReport.jsx'
+import HireCar from './Reports/HireCar.jsx'
+import HireCarPage from './Reports/HireCarPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -128,6 +131,18 @@ const router = createBrowserRouter([
   {
     path : 'duty-slip-printing',
     element : <DutySlipPrint />
+  },
+  {
+    path : 'PendingBillReport',
+    element : <PendingBillReport />
+  },
+  {
+    path : 'HireCar',
+    element : <HireCarPage />
+  },
+  {
+    path : 'HireCarForm',
+    element : <HireCar />
   }
 
 
