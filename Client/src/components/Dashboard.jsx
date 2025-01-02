@@ -1,11 +1,18 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { BarChart } from "@mui/x-charts";
+import { Gauge } from "@mui/x-charts";
+
 
 const Dashboard = () => {
   const currentDate = new Date();
   const day = currentDate.getDate();
   const month = currentDate.toLocaleString("default", { month: "long" });
-  const dayName = currentDate.toLocaleString("default", { weekday: "short" }); // Short day name
+  const dayName = currentDate.toLocaleString("default", { weekday: "short" }); 
+  const [vehicles, setVehicles] = useState([]);
+  const [drivers, setDrivers] = useState([]);
+  const [parties, setParties] = useState([]);
 
   const [time, setTime] = useState("");
 
@@ -14,6 +21,24 @@ const Dashboard = () => {
       const now = new Date();
       setTime(now.toLocaleTimeString());
     };
+
+    const fetchData = async () => {
+      try {
+        const vehiclesResponse = await axios.get("http://localhost:3001/vehicles");
+        setVehicles(vehiclesResponse.data);
+        console.log(vehiclesResponse.data);
+  
+        const driversResponse = await axios.get("http://localhost:3001/drivers");
+        setDrivers(driversResponse.data);
+  
+        const partiesResponse = await axios.get("http://localhost:3001/parties");
+        setParties(partiesResponse.data);
+      } catch (err) {
+        console.error("Error fetching data:", err.message);
+      }
+    };
+    fetchData();
+    
 
     updateClock(); // Update immediately on mount
     const interval = setInterval(updateClock, 1000);
@@ -58,38 +83,64 @@ const Dashboard = () => {
       {/* Part 2 */}
       <div className=" w-[89vw] ml-20 mt-6">
         <div className="flex justify-between space-x-5"> 
-        <div className="artboard artboard-horizontal phone-4 bg-zinc-100 rounded-3xl"></div>
-        <div className="artboard artboard-horizontal phone-1 bg-zinc-100 rounded-3xl"></div>
+
+        <div className="border-2 h-[50vh] w-full bg-zinc-100 rounded-3xl">
+
+          <div>
+          <h2>Drivers List</h2>
+          <div>
+          {drivers.length > 0 ? (
+            drivers.map((driver, index) => (
+              <div key={index}>
+                <p>{driver.name}</p> {/* Replace 'name' with the actual field if it's different */}
+              </div>
+            ))
+          ) : (
+            <p>No drivers available</p>
+          )}
+            </div>
+        </div>
+          
+        </div>
+        <div className="artboard artboard-horizontal phone-1 shadow-lg rounded-3xl flex">
+        <BarChart
+        xAxis={[{ scaleType: 'band', data: ['Vehicles', 'Drivers', 'Trips'] }]}
+        series={[{ data: [10, 12, 9] }, { data: [13, 8, 10] }, { data: [2, 5, 6] }]}
+        width={500}
+        height={300}
+      />
+
+        </div>
         {/* <div className="artboard phone-1 bg-red-400">320×568</div>
         <div className="artboard phone-1 bg-red-400">320×568</div> */}
         </div>
       
-      <div className="flex justify-between text-neutral">
-        <div className="stats stats-vertical lg:stats-horizontal mt-5 shadow w-[51.5vw]">
+      <div className="flex justify-between text-neutral ">
+        <div className="stats stats-vertical lg:stats-horizontal mt-5 shadow-lg w-[55vw]">
           <div className="stat pl-20 pr-20">
-            <div className="stat-title">Downloads</div>
-            <div className="stat-value">31K</div>
-            <div className="stat-desc">Jan 1st - Feb 1st</div>
+            <div className="stat-title">Total Parties</div>
+            <div className="stat-value">{parties.length}</div>
           </div>
 
           <div className="stat pl-20 pr-20"> 
-            <div className="stat-title">New Users</div>
-            <div className="stat-value">4,200</div>
-            <div className="stat-desc">↗︎ 400 (22%)</div>
+            <div className="stat-title">Total vehicles</div>
+            <div className="stat-value">{vehicles.length}</div>
           </div> 
           <div className="stat pl-20 pr-20">
-            <div className="stat-title">New Registers</div>
-            <div className="stat-value">1,200</div>
-            <div className="stat-desc">↘︎ 90 (14%)</div>
+            <div className="stat-title">Total drivers</div>
+            <div className="stat-value">{drivers.length}</div>
           </div>
         </div>
 
-        <div className="radial flex space-x-5 mr-2 -mt-3">
-        <div className="radial-progress" style={{ "--value": "75", "--size": "10rem", "--thickness": "1rem" }} role="progressbar">75%</div>
-        <div className="radial-progress" style={{ "--value": "60", "--size": "10rem", "--thickness": "1rem" }} role="progressbar">60%</div>
-        <div className="radial-progress" style={{ "--value": "80", "--size": "10rem", "--thickness": "1rem" }} role="progressbar">80%</div>
+
+        <div className=" shadow-lg w-[33vw] rounded-3xl h-[21vh]">
+        <div className="radial flex space-x-5 mr-2 ">
+        <Gauge width={150} height={150} value={vehicles.length} valueMax={vehicles.length*1.25} color= "#02b2af"/>
+        <Gauge width={150} height={150} value={drivers.length} valueMax={drivers.length*1.75} />
+        <Gauge width={150} height={150} value={parties.length}  valueMax={parties.length*1.5} />
         </div>
       </div>
+        </div>
 
 
       </div>

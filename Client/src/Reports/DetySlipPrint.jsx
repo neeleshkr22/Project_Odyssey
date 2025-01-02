@@ -71,7 +71,7 @@ const DutySlipPrint = () => {
       <Sidebar />
       <div className="container mx-auto p-5 mt-16">
         <div className="flex justify-between">
-          <h1 className="text-4xl font-bold text-gray-800 mb-8 border-b-2 pb-2 w-[53vw]">Fuel Report</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-8 border-b-2 pb-2 w-[53vw]">Duty Slip</h1>
           <form onSubmit={handleSubmit} className="flex justify-center mb-10">
             <div className="relative w-80">
               <input
