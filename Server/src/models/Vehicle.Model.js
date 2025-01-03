@@ -2,9 +2,6 @@ import mongoose from "mongoose";
 
 
 const vehicleSchema = new mongoose.Schema({
-    _id:{
-        type: String,
-    },
 
     VehicleType: {
         type: String,

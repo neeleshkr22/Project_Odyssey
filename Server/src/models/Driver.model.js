@@ -2,9 +2,6 @@ import mongoose from "mongoose"
 
 
 const DriverSchema =  mongoose.Schema({
-  _id:{
-    type: String,
-  },
     name: {
         type: String,
         required: true, // Full name of the driver

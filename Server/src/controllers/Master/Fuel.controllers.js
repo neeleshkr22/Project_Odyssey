@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+
 import Fuel from '../../models/Fuel.model.js';
 
 export const fuelForm = async (req, res) => {
@@ -6,8 +6,6 @@ export const fuelForm = async (req, res) => {
         const vehicle = req.params.id;
         const { date, cost, amount } = req.body;
 
-        // If you want to keep the id generation
-        const id = crypto.randomBytes(3).toString('hex');
 
         const newFuel = new Fuel({
             vehicle,

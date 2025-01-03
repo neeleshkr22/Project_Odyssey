@@ -1,6 +1,5 @@
 import Driver from '../../models/Driver.model.js';
 import Trip from '../../models/Trip.model.js';
-import crypto from 'crypto';
 
 export const driverForm = async (req, res) => {
   try {
@@ -16,7 +15,6 @@ export const driverForm = async (req, res) => {
       certifications, 
       status 
     } = req.body;
-    const id = crypto.randomBytes(3).toString('hex');
 
     // Validate that required fields are not empty
     if (!contact) {
@@ -25,7 +23,6 @@ export const driverForm = async (req, res) => {
 
     // Create a new driver object with the received data
     const driver = new Driver({
-      _id: id,
       name,
       contact,  // Assign the correct contact value here
       email,

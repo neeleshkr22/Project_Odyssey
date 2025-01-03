@@ -16,6 +16,7 @@ const TripDetails = () => {
         const response = await axios.get('http://localhost:3001/trips');
         setTrips(response.data);
         setFilteredTrips(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching trips", error);
       } finally {

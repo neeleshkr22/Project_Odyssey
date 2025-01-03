@@ -1,14 +1,11 @@
 
 import Maintenance from '../../models/Maintainence.model.js';
-import crypto from 'crypto';
 export const maintainForm = async (req, res) => {
     try {
         const vehicle = req.params.id;
         const { date, cost, type } = req.body;
 
-        const id = crypto.randomBytes(3).toString('hex');
         const newMaintenance = new Maintenance({
-            _id: id,
             vehicle,
             date,
             cost,

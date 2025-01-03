@@ -1,15 +1,12 @@
 import Party from "../../models/Party.model.js"
 import Vehicle from "../../models/Vehicle.Model.js";
 import Trip from "../../models/Trip.model.js";
-import crypto from 'crypto';
 const partyForm = async (req, res) => {
     try {
         
         const { name, contactNumber, email, address, idProof, rentalHistory, paymentDetails } = req.body;
 
-        const id = crypto.randomBytes(3).toString('hex');
         const newParty = new Party({
-            _id: id,
             name,
             contactNumber,
             email,

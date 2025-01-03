@@ -1,8 +1,6 @@
 
 import Trip from '../../models/Trip.model.js';
 import Driver from '../../models/Driver.model.js';
-import crypto from 'crypto';
-
 const TripForm = async (req, res) => {
     try {
         
@@ -21,9 +19,7 @@ const TripForm = async (req, res) => {
         } = req.body;
 
        
-        const id = crypto.randomBytes(3).toString('hex');
         const newTrip = new Trip({
-            _id: id,
             vehicle,
             driver,
             party,

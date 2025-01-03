@@ -1,9 +1,6 @@
 import mongoose from 'mongoose';
 
 const partySchema = new mongoose.Schema({
-  _id:{
-    type: String,
-  },
   name: {
     type: String,
     required: true, 

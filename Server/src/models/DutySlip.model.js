@@ -1,9 +1,6 @@
 import mongoose from "mongoose"
 
 const DutyslipSchema =  mongoose.Schema({
-    _id:{
-        type: String,
-    },
     vehicle:{
         type: String,
         required: true,
