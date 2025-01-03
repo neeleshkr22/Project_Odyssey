@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 const FuelSchema = new mongoose.Schema({
-    _id: { type: String },
     vehicle: {
         type: String,
         ref: 'Vehicle',
