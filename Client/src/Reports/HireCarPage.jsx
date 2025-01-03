@@ -54,6 +54,9 @@ function HireCarPage() {
                   </span>
                 </div>
                 <p className="text-sm text-gray-600 mb-2">
+                  <strong>ID:</strong> {vehicle._id}
+                </p>
+                <p className="text-sm text-gray-600 mb-2">
                   <strong>Company:</strong> {vehicle.companyname}
                 </p>
                 <p className="text-sm text-gray-600 mb-2">

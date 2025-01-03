@@ -2,18 +2,21 @@ import mongoose from 'mongoose';
 
 
 const tripSchema = new mongoose.Schema({
+  _id:{
+    type: String,
+  },
   vehicle: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'Vehicle', 
     required: true,
   },
   driver: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'Driver',
     required: false,
   },
   party: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'Party', 
     required: false,
   },

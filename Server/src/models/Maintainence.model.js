@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 const maintenanceSchema = new mongoose.Schema({
+    _id:{
+        type: String,
+    },
     vehicle: {
         type: String,
         ref: 'Vehicle',

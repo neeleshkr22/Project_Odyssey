@@ -1,6 +1,7 @@
 import Vehicle from '../../models/Vehicle.Model.js';
 import Maintenance from '../../models/Maintainence.model.js';
 import Fuel from '../../models/Fuel.model.js';
+import crypto from 'crypto';
 
 // Function to handle vehicle form submission
 const vehicleForm = async (req, res) => {
@@ -17,9 +18,10 @@ const vehicleForm = async (req, res) => {
             !ownerName || !ownerConntact || !ownerAddress) {
             return res.status(400).json({ message: 'Please fill all required fields' });
         }
-
+        const id = crypto.randomBytes(3).toString('hex');
         // Create a new vehicle instance
         const newVehicle = new Vehicle({
+            _id: id,
             VehicleType,
             comapnyName,
             modelNumber,

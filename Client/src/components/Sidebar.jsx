@@ -60,9 +60,6 @@ const Sidebar = () => {
               {isReportsOpen && (
                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
                   <NavLink to="/duty-slip-printing" className='hover:bg-base-300 p-2 rounded-lg'>Duty Slip Printing</NavLink>
-                  <NavLink to="/invoice" className='hover:bg-base-300 p-2 rounded-lg'>Invoice Printing</NavLink>
-                  <NavLink to="/fuelReport" className='hover:bg-base-300 p-2 rounded-lg'>Fuel Filling Report</NavLink>
-                  <NavLink to="/maintenanceReport" className='hover:bg-base-300 p-2 rounded-lg'>Maintenance Report</NavLink>
                   <NavLink to="/bookingReport" className='hover:bg-base-300 p-2 rounded-lg'>Booking Report</NavLink>
                   <NavLink to="/HireCar" className='hover:bg-base-300 p-2 rounded-lg'>Hire Car</NavLink>
                   <NavLink to="/business-report" className='hover:bg-base-300 p-2 rounded-lg'>Business Report</NavLink>
@@ -82,8 +79,9 @@ const Sidebar = () => {
               {isEntriesOpen && (
                 <ul className='flex flex-col space-y-2 pl-10 mt-2'>
                   {/* Add your entries sub-items here */}
-                  <NavLink to="/entry-type1" className='hover:bg-base-300 p-2 rounded-lg'>Entry Type 1</NavLink>
-                  <NavLink to="/entry-type2" className='hover:bg-base-300 p-2 rounded-lg'>Entry Type 2</NavLink>
+                  <NavLink to="/invoice" className='hover:bg-base-300 p-2 rounded-lg'>Invoice Printing</NavLink>
+                  <NavLink to="/fuelReport" className='hover:bg-base-300 p-2 rounded-lg'>Fuel Filling Report</NavLink>
+                  <NavLink to="/maintenanceReport" className='hover:bg-base-300 p-2 rounded-lg'>Maintenance Report</NavLink>
                   {/* Add more entries as needed */}
                 </ul>
               )}

@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 
 const hireCarSchema = new mongoose.Schema({
+  _id:{
+    type: String,
+  },
   carname: { type: String, required: true },
   companyname: { type: String, required: true },
   purchasedDate: { type: Date, required: true },

@@ -1,4 +1,5 @@
 import HireCar from "../../models/Hirecar.model.js";
+import crypto from "crypto";
 export const addCar = async (req, res) => {
     try {
       const {
@@ -13,8 +14,10 @@ export const addCar = async (req, res) => {
         insuranceDetails,
         color
       } = req.body;
+      const id = crypto.randomBytes(3).toString('hex');
   
       const newCar = new HireCar({
+        _id: id,
         carname,
         companyname,
         purchasedDate,

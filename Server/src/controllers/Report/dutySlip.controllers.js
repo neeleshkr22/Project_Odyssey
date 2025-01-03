@@ -1,11 +1,13 @@
 import DutySlip from "../../models/DutySlip.model.js";
+import crypto from "crypto";
 
 export const createDutySlip = async (req, res) => {
     try {
         const { id: vehicle } = req.params; 
         const { driver, startTime, endTime, startLocation, endLocation, description } = req.body; 
-
+        const id = crypto.randomBytes(3).toString('hex');
         const newDutySlip = new DutySlip({
+            _id: id,
             vehicle,
             driver,
             startTime,

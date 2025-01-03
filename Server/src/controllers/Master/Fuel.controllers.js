@@ -6,8 +6,7 @@ export const fuelForm = async (req, res) => {
         const vehicle = req.params.id;
         const { date, cost, amount } = req.body;
 
-        // Generate a random 5-character hexadecimal string
-        const id = crypto.randomBytes(3).toString('hex'); // 3 bytes = 6 characters in hex, we'll take 5
+        const id = crypto.randomBytes(3).toString('hex');
 
         const newFuel = new Fuel({
             _id: id, // Assign the custom ID
