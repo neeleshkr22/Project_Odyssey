@@ -31,7 +31,7 @@ ReportRouter.get('/getCars',async(req,res)=>{
     getCar(req,res);
 })
 
-ReportRouter.get('/invoice/:partyId',async(req,res)=>{
+ReportRouter.get('/invoice/',async(req,res)=>{
     Invoice(req,res);
 })
 
