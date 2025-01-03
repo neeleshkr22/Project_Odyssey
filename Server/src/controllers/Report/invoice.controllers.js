@@ -1,16 +1,15 @@
 import mongoose from "mongoose";
 import Trip from "../../models/Trip.model.js";
-import Party from "../../models/Party.model.js";  // Assuming you have a Party model
+import Party from "../../models/Party.model.js";  
 
 export const Invoice = async (req, res) => {
     try {
-        const { partyName } = req.query; // Use partyName from query parameters
+        const { partyName } = req.query; 
         if (!partyName) {
             return res.status(400).json({ message: "Party name is required" });
         }
 
-        // Find the party by name
-        const party = await Party.findOne({ name: { $regex: partyName, $options: 'i' } });  // Case-insensitive search
+        const party = await Party.findOne({ name: { $regex: partyName, $options: 'i' } });  
         if (!party) {
             return res.status(404).json({ message: "Party not found" });
         }
