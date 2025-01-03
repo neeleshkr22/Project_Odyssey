@@ -53,7 +53,7 @@ const OwnerDetails = () => {
           <p>No vehicles found</p>
         ) : (
           filteredVehicles.map((vehicle, index) => (
-            <div key={index} className="w-[30%] h-48 bg-white shadow-lg rounded-lg p-4  flex justify-between">
+            <div key={index} className="w-[30%] h-48 bg-white shadow-lg rounded-lg p-4  flex justify-between hover:shadow-xl hover:scale-105 transition-all duration-200">
               <div className=' flex flex-col gap-2 pt-4'>
                 <h3 className="text-md font-semibold">Name: {vehicle.ownerName}</h3>
                 <h3 className="">Id: {vehicle._id}</h3>

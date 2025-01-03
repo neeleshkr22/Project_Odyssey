@@ -72,7 +72,7 @@ const TripDetails = () => {
           </div>
         ) : filteredTrips.length > 0 ? (
           filteredTrips.map((trip) => (
-            <div key={trip._id} className='bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300 mb-2'>
+            <div key={trip._id} className='bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between hover:shadow-xl hover:scale-105 transition-all duration-200 mb-2'>
               <div className="flex justify-between mb-2">
                 <p className='font-semibold'>Trip:</p>
                 <p>{trip._id}</p>

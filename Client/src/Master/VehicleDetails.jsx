@@ -60,7 +60,7 @@ function VehicleDetails() {
       {/* Card Layout */}
       <div className="cards flex flex-wrap gap-6 mt-10 ml-[5.5rem]">
         {filteredVehicles.map((vehicle, index) => (
-          <div key={index} className="p-6 flex w-[30%] h-48 bg-white shadow-lg rounded-lg">
+          <div key={index} className="p-6 flex w-[30%] h-48 bg-white shadow-lg rounded-lg hover:shadow-xl hover:scale-105 transition-all duration-200">
             <div>
               <h3 className="text-md font-semibold">{vehicle._id}</h3>
               <p className="text-gray-600">{vehicle.licenceNumber}</p>

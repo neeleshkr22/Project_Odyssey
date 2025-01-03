@@ -30,9 +30,6 @@ import PendingBillReport from './Reports/PendingBillReport.jsx'
 import HireCar from './Reports/HireCar.jsx'
 import HireCarPage from './Reports/HireCarPage.jsx'
 import InvoicePrinting from './Reports/InvoicePrinting.jsx'
-import InvoiceByvehicle from './Reports/InvoiceByvehicle.jsx'
-import InvoiceByParty from './Reports/invoiceByParty.jsx'
-import InvoiceByDriver from './Reports/invoiceByDriver.jsx'
 
 const router = createBrowserRouter([
   {
@@ -151,20 +148,7 @@ const router = createBrowserRouter([
   {
     path : '/invoice',
     element : <InvoicePrinting />
-  },
-  {
-    path : '/invoiceByVehicle',
-    element : <InvoiceByvehicle />
-  },
-  {
-    path : '/invoiceByDriver',
-    element : <InvoiceByDriver/>
-  },
-  {
-    path : '/invoiceByParty',
-    element : <InvoiceByParty/>
   }
-
 
 ])
 

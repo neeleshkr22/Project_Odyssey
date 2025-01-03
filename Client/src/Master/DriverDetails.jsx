@@ -70,7 +70,7 @@ function DriverDetails() {
       ) : (
         <div className='flex flex-wrap gap-6 mt-10 ml-[5.5rem]'>
           {filteredDrivers.map((driver, index) => (
-            <div key={index} className="bg-white shadow-lg rounded-lg p-3 flex justify-between">
+            <div key={index} className="bg-white shadow-lg rounded-lg p-3 flex justify-between hover:shadow-xl hover:scale-105 transition-all duration-200">
               <div className='flex flex-col p-4 pb-0'>
                 <h3 className="text-lg font-semibold">{driver.name}</h3>
                 <p className="text-gray-600">{driver.licenseNumber}</p>

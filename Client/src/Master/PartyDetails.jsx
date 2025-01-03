@@ -64,7 +64,7 @@ function PartyDetails() {
           {filteredParty.map((party, index) => (
             <div
               key={index}
-              className="w-[30%] h-48 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between"
+              className="w-[30%] h-48 bg-white shadow-lg rounded-lg p-4 flex flex-col justify-between hover:shadow-xl hover:scale-105 transition-all duration-200"
             >
               <h3 className="text-lg font-semibold">{party.name}</h3>
               <h3 className="">{party._id}</h3>
