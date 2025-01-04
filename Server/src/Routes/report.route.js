@@ -3,6 +3,7 @@ import { fuelRep } from '../controllers/Report/fuelReport.controllers.js';
 import { maintainRep } from '../controllers/Report/maintenanceReport.controllers.js';
 import { getDutySlips , createDutySlip } from '../controllers/Report/dutyslip.controllers.js';
 import {addCar, getCar } from '../controllers/Report/hireCar.contoller.js'
+import { Invoice } from '../controllers/Report/invoice.controllers.js';
 
 const ReportRouter = express.Router();
 
@@ -28,6 +29,10 @@ ReportRouter.post("/addCar",async(req,res)=>{
 
 ReportRouter.get('/getCars',async(req,res)=>{
     getCar(req,res);
+})
+
+ReportRouter.get('/invoice/',async(req,res)=>{
+    Invoice(req,res);
 })
 
 

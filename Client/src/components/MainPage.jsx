@@ -12,7 +12,6 @@ const MainPage = () => {
 
         <div className="main">
         {active === 'dashboard' && <div><Dashboard></Dashboard></div>}
-        {active === 'addcar' && <div><CarForm></CarForm></div>}
         </div> 
 
         <div className="sidebar">
