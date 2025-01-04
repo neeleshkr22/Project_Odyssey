@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { BarChart } from "@mui/x-charts";
 import { Gauge } from "@mui/x-charts";
+import { LineChart } from "@mui/x-charts";
 
 
 const Dashboard = () => {
@@ -47,7 +48,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="maindash h-[100vh] w-[89vw]">
+    <div className="maindash h-[90vh] w-[89vw]">
 
       {/* Part 1 */}
       <div className="w-[89vw] ml-20 pt-3 flex justify-between">
@@ -71,7 +72,7 @@ const Dashboard = () => {
               className=" pr-2
           "
             >
-              <div className="text-sm border-b">{dayName}</div>
+              <div className="text-sm border-b border-black">{dayName}</div>
               <div className="mt-1 text-sm">{month}</div>
             </div>
           </div>
@@ -86,20 +87,22 @@ const Dashboard = () => {
 
         <div className=" h-[50vh] w-full shadow-lg rounded-3xl">
 
-          <div>
-          <h2>Drivers List</h2>
-          <div>
-          {drivers.length > 0 ? (
-            drivers.map((driver, index) => (
-              <div key={index}>
-                <p>{driver.name}</p> {/* Replace 'name' with the actual field if it's different */}
-              </div>
-            ))
-          ) : (
-            <p>No drivers available</p>
-          )}
-            </div>
-        </div>
+          <div className=" ml-5">
+          <LineChart
+            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+            series={[
+              {
+                data: [2, 5.5, 2, 8.5, 1.5, 5],
+                area: true,
+                color: "#02b2af",
+              },
+            ]}
+            width={800}
+            height={350}
+          />
+
+        
+          </div>
           
         </div>
         <div className="artboard artboard-horizontal phone-1 shadow-lg rounded-3xl flex">

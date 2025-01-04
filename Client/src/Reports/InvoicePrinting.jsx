@@ -165,7 +165,7 @@ const InvoicePrinting = () => {
                 <tr>
                   <th className="border border-gray-400 px-6 py-3 text-left text-sm font-semibold text-gray-700">Date</th>
                   <th className="border border-gray-400 px-6 py-3 text-left text-sm font-semibold text-gray-700">Vehicle ID</th>
-                  <th className="border border-gray-400 px-6 py-3 text-left text-sm font-semibold text-gray-700">Driver ID</th>
+                  <th className="border border-gray-400 px-6 py-3 text-left text-sm font-semibold text-gray-700">Driver</th>
                   <th className="border border-gray-400 px-6 py-3 text-left text-sm font-semibold text-gray-700">Total Hours</th>
                   <th className="border border-gray-400 px-6 py-3 text-left text-sm font-semibold text-gray-700">Total Km</th>
                   <th className="border border-gray-400 px-6 py-3 text-left text-sm font-semibold text-gray-700">Extra Hours</th>
@@ -198,7 +198,7 @@ const InvoicePrinting = () => {
                   <td className="border border-gray-400 px-6 py-3 text-sm bg-gray-200">{calculateTotalHoursFromData()} hours</td>
                   <td className="border border-gray-400 px-6 py-3 text-sm bg-gray-200">{calculateTotalKm()} km</td>
                   <td className="border border-gray-400 px-6 py-3 text-sm bg-gray-200">0 hours</td>
-                  <td className="border border-gray-400 px-6 py-3 text-sm bg-gray-200">0 hours</td>
+                  <td className="border border-gray-400 px-6 py-3 text-sm bg-gray-200">0 </td>
                 </tr>
               </tfoot>
             </table>
