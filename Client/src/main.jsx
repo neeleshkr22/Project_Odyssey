@@ -30,21 +30,22 @@ import PendingBillReport from './Reports/PendingBillReport.jsx'
 import HireCar from './Reports/HireCar.jsx'
 import HireCarPage from './Reports/HireCarPage.jsx'
 import InvoicePrinting from './Reports/InvoicePrinting.jsx'
+import { ProtectedRoute } from './components/ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />
+    element: <ProtectedRoute><App /></ProtectedRoute>
   },
   
   {
     path: '/register',
-    element: <Register />
+    element: <Register/>
   },
   
   {
     path: '/settings',
-    element: <ThemeSettings />
+    element: <ProtectedRoute><ThemeSettings /></ProtectedRoute>
   },
   
   {
@@ -54,100 +55,100 @@ const router = createBrowserRouter([
 
   {
     path: '/addcar',
-    element: <CarForm />
+    element: <ProtectedRoute><CarForm /></ProtectedRoute>
   },
   {
     path: '/adddriver',
-    element: <DriverForm />
+    element: <ProtectedRoute><DriverForm /></ProtectedRoute>
   },
   {
     path: '/vehicle-master',
-    element: <VehicleDetails />
+    element: <ProtectedRoute><VehicleDetails /></ProtectedRoute>
   },
   {
     path: '/driver-master',
-    element: <DriverDetails />
+    element: <ProtectedRoute><DriverDetails /></ProtectedRoute>
   },
   {
     path: '/owner-master',
-    element: <OwnerDetails />
+    element: <ProtectedRoute><OwnerDetails /></ProtectedRoute>
   },
   {
     path: '/addparty',
-    element: <PartyForm />
+    element: <ProtectedRoute><PartyForm /></ProtectedRoute>
   },
   
   {
     path: '/party-master',
-    element: <PartyDetails />
+    element: <ProtectedRoute><PartyDetails /></ProtectedRoute>
   },
   {
     path: '/trip-master',
-    element: <TripDetails />
+    element: <ProtectedRoute><TripDetails /></ProtectedRoute>
   },
   {
     path: '/addtrip',
-    element: <TripForm />
+    element: <ProtectedRoute><TripForm /></ProtectedRoute>
   },
   {
     path: '/vehicle/:id',
-    element: <VehiclePage />
+    element: <ProtectedRoute><VehiclePage /></ProtectedRoute>
   },
   {
     path: '/driver/:id',
-    element: <DriverPage />
+    element: <ProtectedRoute><DriverPage /></ProtectedRoute>
   },
   {
     path: '/party/:id',
-    element: <PartyPage />
+    element: <ProtectedRoute><PartyPage /></ProtectedRoute>
   },
   {
     path: '/maintenance/:id',
-    element: <MaintenanceForm />
+    element: <ProtectedRoute><MaintenanceForm /></ProtectedRoute>
   },
   {
     path: '/fuel/:id',
-    element: <FuelForm />
+    element: <ProtectedRoute><FuelForm /></ProtectedRoute>
   },
   {
     path : '/trip/:id',
-    element : <TripPage />
+    element : <ProtectedRoute><TripPage /></ProtectedRoute>
   },
   {
     path : '/fuelReport',
-    element : <FuelReport />
+    element : <ProtectedRoute><FuelReport /></ProtectedRoute>
   },
   {
     path : '/maintenanceReport',
-    element : <MaintenanceReport />
+    element : <ProtectedRoute><MaintenanceReport /></ProtectedRoute>
   },
   {
     path : '/dutySlip/:id',
-    element : <DutySlip />
+    element : <ProtectedRoute><DutySlip /></ProtectedRoute>
   },
   {
     path : '/bookingReport',
-    element : <TripDetails />
+    element : <ProtectedRoute><TripDetails /></ProtectedRoute>
   },
   {
     path : 'duty-slip-printing',
-    element : <DutySlipPrint />
+    element : <ProtectedRoute><DutySlipPrint /></ProtectedRoute>
   },
   {
     path : 'PendingBillReport',
-    element : <PendingBillReport />
+    element : <ProtectedRoute><PendingBillReport /></ProtectedRoute>
   },
   {
     path : 'HireCar',
-    element : <HireCarPage />
+    element : <ProtectedRoute><HireCarPage /></ProtectedRoute>
   },
   {
     path : 'HireCarForm',
-    element : <HireCar />
+    element : <ProtectedRoute><HireCar /></ProtectedRoute>
   },
   {
     path : '/invoice',
-    element : <InvoicePrinting />
+    element : <ProtectedRoute><InvoicePrinting /></ProtectedRoute>
   }
 
 ])

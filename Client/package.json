@@ -16,6 +16,7 @@
     "@mui/x-charts": "^7.23.2",
     "axios": "^1.7.9",
     "daisyui": "^4.12.22",
+    "js-cookie": "^3.0.5",
     "lucide-react": "^0.469.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
